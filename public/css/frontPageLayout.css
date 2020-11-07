@@ -1,0 +1,32 @@
+#navColor {
+  background-color: #8cc63f;
+  /* display: flexbox; */
+}
+.nav-link {
+  font-weight: bold;
+  font-size: 15pt;
+  color: #000000;
+}
+.nav-link:hover {
+  color: #ffffff;
+}
+.greyBox {
+  background-color: #e6e6e6;
+  padding-top: 50px;
+}
+h5 {
+  color: black;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.btmText {
+  color: black;
+  text-align: center;
+  margin-top: 30px;
+}
+form li {
+  list-style: none;
+  margin-bottom: 15px;
+  /* float: center; */
+}

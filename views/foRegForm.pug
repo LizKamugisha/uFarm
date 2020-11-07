@@ -1,0 +1,42 @@
+extends layoutAO
+block content
+    div.col-10(class='regFormDiv')
+        h3 Farmer One Registration
+        form(class='form-group row' name='foReg' action='/registerFO' method='POST')
+            label(for='foName' class='col-sm-2 col-form-label') Names :
+            input.col-md-10.form-control(type='text' name='foName' placeholder='Please Enter Your First name & Surname' required)
+            //- p(class='alert' id='nameAlert')
+            
+            label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
+            select.col-md-3.form-control(name='selectWard' required)
+                option(selected='' value='default') Select Urban Ward Area
+                option#ward1(value='w1') Urban Ward 1 (LC1)
+                option#ward2(value='w2') Urban Ward 2 (LC2)
+                option#ward3(value='w3') Urban Ward 3 (LC3)
+                option#ward4(value='w4') Urban Ward 4 (LC4)
+            //- p(class='alert' id='wardAlert')
+
+            label(for='foNum' class='col-sm-2 col-form-label') F.O Number :
+            input.col-md-5.form-control(type='text' name='foNum' placeholder='Please Enter Your FarmerOne ID Number' required)
+
+            label(for='regDate' class='col-sm-2 col-form-label') Date of Registration :
+            input.col-md-3.form-control(type='text' name='regDate' placeholder='Please Enter the Registration Date' required)
+
+            label(for='foNum' class='col-sm-2 col-form-label') F.O Number :
+            input.col-md-5.form-control(type='text' name='foNum' placeholder='Please Enter Your FarmerOne ID Number' required)
+
+            
+
+
+                    
+                    //-             input.col-md-11.form-control(type='password' name='pwd' size='12' placeholder='Enter Password' required)
+                    //-             p#pwdAlert
+                    //-         li
+                    //-             select.col-md-11.form-control(name='selectRole' required)
+                    //-                 option(selected='' value='default') Select Role
+                    //-                 option#roleAO(value='AO') Agricultural Officer
+                    //-                 option#roleFO(value='FO') Farmer One
+                    //-                 option#roleUF(value='UF') Urban Farmer
+                    //-             p#selectAlert
+                    //-         button.btn.btn-success.btn-lg.btn-block.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
+                    //-             | LOGIN

@@ -1,3 +1,43 @@
 extends layoutAO
 block content
-    h2 Create FO Login Credentials
+    h3(class='formTitle') Create Login Credentials
+    form(class='form-group row' name='createLogin' action='/createLogin' method='POST')
+            label(for='names' class='col-sm-2 col-form-label') Name :
+            input.col-md-10.form-control(type='text' name='names' placeholder='Please enter your first name & last name' required)
+            //- p(class='alert' id='usernameAlert')
+            label(for='username' class='col-sm-2 col-form-label') Username :
+            input.col-md-10.form-control(type='text' name='username' placeholder='Please create a alphanumeric username' required)
+            //- p(class='alert' id='usernameAlert')
+            label(for='password' class='col-sm-2 col-form-label') Password :
+            input.col-md-10.form-control(type='password' name='username' placeholder='Please create your password' required)
+            //- p(class='alert' id='passwordAlert')
+            label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
+            select.col-md-10.form-control(name='selectWard')
+                option(selected='' value='default') Select designated area
+                option#ward1(value='w1') Urban Ward 1 (LC1)
+                option#ward2(value='w2') Urban Ward 2 (LC2)
+                option#ward3(value='w3') Urban Ward 3 (LC3)
+                option#ward4(value='w4') Urban Ward 4 (LC4)
+            //- p(class='alert' id='wardAlert')
+            button(type='submit' class='btn btn-success btn-lg col-sm-10' id='btnStyle' name='submitForm' value='submit' onclick='validateForm()') Create
+    //- br
+    //- header.card-header
+    //-     h4.card-title Users Registerd On The System 
+    //- table.table
+    //-     thead.thead-dark
+    //-         tr
+    //-             th Names
+    //-             th Assigned Ward
+    //-             th Username
+    //-             th Password
+    //-     tbody
+    //-         if users.length
+    //-         each user in users
+    //-             tr
+    //-                 td #{user.names}
+    //-                 td #{user.ward}
+    //-                 td #{user.username}
+    //-                 td #{user.password}
+    //-         else
+    //-             p No registrations yet :(
+

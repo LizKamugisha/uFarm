@@ -1,16 +1,27 @@
 // To test if the node is working:
 // console.log('Hello, World! Node is working...');
 
-// Require dependencies into project
+// Require dependencies into project using require keyword
 const path = require('path')
 const express = require('express')
 const bodyParser= require('body-parser')
 const mongoose = require('mongoose')
+const passportLocalMongoose = require('passport-local-mongoose');
 require('dotenv').config();
+const expressSession = require('express-session')({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+});
+const passport = require('passport');
 
 // instantiate & assign/import routes
 const pageRoutes = require('./routes/uFarmRoutes');
+const loginRoutes = require('./routes/uFarmLogin');
 
+// Importing model schema 
+const FarmerOneReg = require('./models/FarmerOneReg');
+const UfarmUsers = require('./models/UfarmUsers');
 // Create an express application
 const app = express()
 
@@ -43,11 +54,35 @@ app.set('views', path.join(__dirname, 'views'))
 // Body Parser Middleware settings
 app.use(bodyParser.urlencoded({extended: true}))
 
+// Express-Session & Passport Config Settings
+app.use(expressSession);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connecting Passport to Schema
+passport.use(UfarmUsers.createStrategy());
+passport.serializeUser(UfarmUsers.serializeUser());
+passport.deserializeUser(UfarmUsers.deserializeUser());
+
 // Connect to public folder
 app.use(express.static(path.join(__dirname,'public')))
 
-// Routing
+// Connect to main Routing where all Get & Post Methods are
 app.use('/', pageRoutes);
+app.use('/login', loginRoutes );
+
+//logout
+app.post('/logout', (req, res) => {
+  if (req.session) {
+      req.session.destroy((err)=> {
+          if (err) {
+              // failed to destroy session
+          } else {
+              return res.redirect('/login');
+          }
+      })
+  }  
+})
 
 // Incase of Error
 app.get('*',(req,res)=>{

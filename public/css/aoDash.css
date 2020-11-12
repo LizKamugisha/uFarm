@@ -36,3 +36,23 @@ img {
     font-size: 18px;
   }
 }
+.formTitle {
+  color: #8cc63f;
+  font-family: serif;
+  font-size: 28pt;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.custom-file {
+  margin-left: 20px;
+}
+label,
+input,
+select {
+  margin-bottom: 10px;
+}
+#btnStyle {
+  margin-top: 30px;
+  margin-left: 190px;
+}

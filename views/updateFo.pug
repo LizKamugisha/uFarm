@@ -1,0 +1,10 @@
+extends layoutAO
+block content
+    h3(class='formTitle') Update Farmer One Details
+    form(method='post' action='/update?id='+user._id)
+        table(class='table')
+         thead
+            tr
+                th Names
+                td
+                    input.form-control(value = user.name name ='name')

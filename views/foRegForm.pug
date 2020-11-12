@@ -1,14 +1,14 @@
 extends layoutAO
 block content
-    div.col-10(class='regFormDiv')
-        h3 Farmer One Registration
+    div(class='regFormDiv')
+        h3(class='formTitle') Farmer One Registration
         form(class='form-group row' name='foReg' action='/registerFO' method='POST')
             label(for='foName' class='col-sm-2 col-form-label') Names :
             input.col-md-10.form-control(type='text' name='foName' placeholder='Please Enter Your First name & Surname' required)
             //- p(class='alert' id='nameAlert')
             
             label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
-            select.col-md-3.form-control(name='selectWard' required)
+            select.col-md-10.form-control(name='selectWard' required)
                 option(selected='' value='default') Select Urban Ward Area
                 option#ward1(value='w1') Urban Ward 1 (LC1)
                 option#ward2(value='w2') Urban Ward 2 (LC2)
@@ -17,16 +17,58 @@ block content
             //- p(class='alert' id='wardAlert')
 
             label(for='foNum' class='col-sm-2 col-form-label') F.O Number :
-            input.col-md-5.form-control(type='text' name='foNum' placeholder='Please Enter Your FarmerOne ID Number' required)
+            input.col-md-10.form-control(type='text' name='foNum' placeholder='Please Enter Your Unique ID Number here' required)
 
-            label(for='regDate' class='col-sm-2 col-form-label') Date of Registration :
-            input.col-md-3.form-control(type='text' name='regDate' placeholder='Please Enter the Registration Date' required)
+            label(for='regDate' class='col-sm-2 col-form-label') Registration Date :
+            input.col-md-10.form-control(type='date' name='regDate' placeholder='Please Enter the Registration Date' required)
 
-            label(for='foNum' class='col-sm-2 col-form-label') F.O Number :
-            input.col-md-5.form-control(type='text' name='foNum' placeholder='Please Enter Your FarmerOne ID Number' required)
-
+            label(class="col-form-label col-sm-2") Gender :
+            div.col-sm-10.form-check(class="genderOption")
+                input(class="form-check-input" type="radio" name="gender" id="male" value="gender1")
+                label(class="form-check-label checkLabel col-2" for="male") Male 
+                input(class="form-check-input" type="radio" name="gender" id="female" value="gender2")
+                label(class="form-check-label checkLabel" for="female") Female
+            //- p(class="alert" id="genderAlert")
             
+            label(for='birthday' class='col-sm-2 col-form-label') Date of Birth :
+            input.col-md-10.form-control(name='birthday' type='date' required)
+                
+            label(for='nin' class='col-sm-2 col-form-label') National ID :
+            input.col-md-4.form-control(type='text' name='nin' placeholder='Please Enter Your National ID Number' required)
 
+            div(class='custom-file col-sm-5')
+                label(class='custom-file-label' for='idPhoto') Upload Photo of National Id
+                input(type='file' class='custom-file-input' id='idPhoto')
+                
+            label(for='phone' class='col-sm-2 col-form-label') Phone Number :
+            input.col-md-10.form-control(type='number' name='phone' placeholder='Please Enter Your Phone Number' required)
+
+            label(class='col-form-label col-sm-2') Select Activities :
+            div.col-sm-10.form-check(name='foActivities')
+                    input(class='form-check-input' type='checkbox' id='reg') 
+                    label(class='form-check-label checkLabel col-2' for='reg') Registration
+                    input(class='form-check-input' type='checkbox' id='ins') 
+                    label(class='form-check-label checkLabel col-2' for='ins') Inspection
+                    input(class='form-check-input' type='checkbox' id='app') 
+                    label(class='form-check-label checkLabel col-2' for='app') Approval
+                    input(class='form-check-input' type='checkbox' id='rev') 
+                    label(class='form-check-label checkLabel col-2' for='rev') Review
+
+            label(for='residence' class='col-sm-2 col-form-label') Residence Type :
+            select.col-md-10.form-control(name='residence' required)
+                option(selected='' value='default') Select Residence Type
+                option#perm(value='permanent') Permanent
+                option#temp(value='rental') Rental
+
+            label(for='homeStay' class='col-sm-2 col-form-label') Period of Stay :
+            select.col-md-10.form-control(name='homeStay' required)
+                option(selected='' value='default') How long have you stayed in Masajja Division ?
+                option#abv10(value='abv10') More than 10 Years
+                option#less10(value='less10') Less than 10 Years
+
+            label(for='address' class='col-sm-2 col-form-label') Home Adress :
+            textarea(name='address', cols='10', rows='5' type='text' placeholder='Please enter the directions to your home' required).col-md-10.form-control
+            button(type='submit' class='btn btn-success btn-lg col-sm-10' id='btnStyle' name='submitForm' value='submit' onclick='validateForm()') Submit
 
                     
                     //-             input.col-md-11.form-control(type='password' name='pwd' size='12' placeholder='Enter Password' required)

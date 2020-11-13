@@ -20,8 +20,10 @@ const pageRoutes = require('./routes/uFarmRoutes');
 const loginRoutes = require('./routes/uFarmLogin');
 
 // Importing model schema 
-const FarmerOneReg = require('./models/FarmerOneReg');
-const UfarmUsers = require('./models/UfarmUsers');
+// // const FarmerOneReg = require('./models/FarmerOneReg');
+// const UfarmUsers = require('./models/UfarmUsers');
+const UserReg = require('./models/UserReg');
+
 // Create an express application
 const app = express()
 
@@ -60,16 +62,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Connecting Passport to Schema
-passport.use(UfarmUsers.createStrategy());
-passport.serializeUser(UfarmUsers.serializeUser());
-passport.deserializeUser(UfarmUsers.deserializeUser());
+passport.use(UserReg.createStrategy());
+passport.serializeUser(UserReg.serializeUser());
+passport.deserializeUser(UserReg.deserializeUser());
+
+// passport.use(FarmerOneReg.createStrategy());
+// passport.serializeUser(FarmerOneReg.serializeUser());
+// passport.deserializeUser(FarmerOneReg.deserializeUser());
 
 // Connect to public folder
 app.use(express.static(path.join(__dirname,'public')))
 
 // Connect to main Routing where all Get & Post Methods are
 app.use('/', pageRoutes);
-app.use('/login', loginRoutes );
+// app.use('/login', loginRoutes );
 
 //logout
 app.post('/logout', (req, res) => {

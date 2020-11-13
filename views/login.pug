@@ -9,21 +9,25 @@ block content
                 h5 Please login to access your Ufarm Dashboard
                 ul
                     li
-                        input.col-md-11.form-control(type='text' name='userid' size='12' placeholder='Enter Username' required)
+                        input.col-md-11.form-control(type='text' name='username' size='12' placeholder='Enter Username' required)
                         p#usernameAlert
                     li
-                        input.col-md-11.form-control(type='password' name='pwd' size='12' placeholder='Enter Password' required)
+                        input.col-md-11.form-control(type='password' name='password' size='12' placeholder='Enter Password' required)
                         p#pwdAlert
-                    li
-                        select.col-md-11.form-control(name='selectRole' required)
-                            option(selected='' value='default') Select Role
-                            option#roleAO(value='AO') Agricultural Officer
-                            option#roleFO(value='FO') Farmer One
-                            option#roleUF(value='UF') Urban Farmer
-                        p#selectAlert
+                    //- li
+                    //-     select.col-md-11.form-control(name='selectRole' required)
+                    //-         option(selected='' value='default') Select Role
+                    //-         option#roleAO(value='AO') Agricultural Officer
+                    //-         option#roleFO(value='FO') Farmer One
+                    //-         option#roleUF(value='UF') Urban Farmer
+                    //-     p#selectAlert
                     button.btn.btn-success.btn-lg.btn-block.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
                         | LOGIN
                 div.btmText
                     | Forgot your Username or Password ? 
                     br 
                     | Contact your district LC Agricultural Officer for assistance.
+                    br
+                    | If you are the Agricultural Officer, Sign Up to access the Admin Dashboard
+                    br
+                    a(class='btn btn-outline-success btn-lng' href='/aoSignUp') Sign Up

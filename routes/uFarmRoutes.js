@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+// const passportLocalMongoose = require('passport-local-mongoose');
 
 // Importing model schema 
-const User = require('../models/FarmerOneReg')
+const User = require('../models/UserReg')
 
 // Homepage Routing
 router.get('/',(req,res)=>{
@@ -24,6 +25,50 @@ router.get('/shop',(req,res)=>{
 router.get('/order',(req,res)=>{
     res.render('order',{title:'UFarm Order'})
 });
+
+// Sign Up Route
+router.get('/aoSignUp',(req,res)=>{
+    res.render('aoSignUp',{title:'UFarm SignUp'})
+});
+// Save the sign up details to the database and redirect to login
+// router.post('/signup', passport.authenticate('local'), (req,res) =>{
+//     req.session.user = req.user;
+//     res.redirect('/login');
+// })
+
+// router.post('/signup', async(req,res)=>{
+//     try{
+//         const userReg= new User(req.body);
+//         await userReg.save(() => {
+//             console.log('save success')
+//             res.redirect('/login')
+//         })
+//     }
+//     catch(err) {
+//         res.status(400).send('Sorry! Something went wrong.')
+//         console.log(err)
+//     }   
+// })
+
+router.post('/signup', async (req, res) => { 
+    try { const items = new User(req.body);
+        await User.register(items, req.body.password , (err) => {
+            if (err)
+            { throw err } res.redirect('/logIntoDash') 
+            }) } catch (err) { 
+                res.status(400).send('Sorry! Something went wrong.')
+                console.log(err)}
+            })
+
+router.get('/logIntoDash',(req,res)=>{
+    res.render('login',{title:'UFarm Login'})
+});
+
+//process the username and password that are submitted in the login page
+router.post('/logIntoDash', passport.authenticate('local'), (req,res) =>{
+    req.session.user = req.user;
+    res.redirect('/aoDash');
+})
 
 // AO Dashboard Routing
 router.get('/aoDash',(req,res)=>{

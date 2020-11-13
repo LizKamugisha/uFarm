@@ -4,7 +4,8 @@ const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 const UfarmUsers = require('../models/UfarmUsers');
 
-// Get and display the login page
+
+// Login Route
 // router.get('/login',(req,res)=>{
 //     res.render('login',{title:'UFarm Login'})
 // });
@@ -12,10 +13,11 @@ router.get('/',(req,res)=>{
     res.render('login',{title:'UFarm Login'})
 });
 //process the username and password that are submitted in the login page
-router.post('/logIntoDash', passport.authenticate('local'), (req,res) =>{
+router.post('/logIntoDash', passport.authenticate('local', {failureRedirect: '/login'}), (req,res) =>{
     req.session.user = req.user;
     res.redirect('/aoDash');
 })
+
 
 // Creating System Users & saving thier data to the database
 router.post('/createLogin', async (req, res) => {

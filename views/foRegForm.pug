@@ -3,8 +3,8 @@ block content
     div(class='regFormDiv')
         h3(class='formTitle') Farmer One Registration
         form(class='form-group row' name='foReg' action='/registerFO' method='POST')
-            label(for='foName' class='col-sm-2 col-form-label') Names :
-            input.col-md-10.form-control(type='text' name='foName' placeholder='Please Enter Your First name & Surname' required)
+            label(for='name' class='col-sm-2 col-form-label') Names :
+            input.col-md-10.form-control(type='text' name='name' placeholder='Please Enter Your First name & Surname' required)
             //- p(class='alert' id='nameAlert')
             
             label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
@@ -68,6 +68,16 @@ block content
 
             label(for='address' class='col-sm-2 col-form-label') Home Adress :
             textarea(name='address', cols='10', rows='5' type='text' placeholder='Please enter the directions to your home' required).col-md-10.form-control
+
+            br
+            label(for='username' class='col-sm-2 col-form-label') Username :
+            input.col-md-10.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
+            //- p#usernameAlert
+            
+            label(for='password' class='col-sm-2 col-form-label') Password :
+            input.col-md-10.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
+            //- p#pwdAlert
+
             button(type='submit' class='btn btn-success btn-lg col-sm-10' id='btnStyle' name='submitForm' value='submit' onclick='validateForm()') Submit
 
                     

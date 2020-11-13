@@ -78,17 +78,17 @@ app.use('/', pageRoutes);
 // app.use('/login', loginRoutes );
 
 //logout
-app.post('/logout', (req, res) => {
-  if (req.session) {
-      req.session.destroy((err)=> {
-          if (err) {
-              // failed to destroy session
-          } else {
-              return res.redirect('/login');
-          }
-      })
-  }  
-})
+// app.post('/logIntoDash', (req, res) => {
+//   if (req.session) {
+//       req.session.destroy((err)=> {
+//           if (err) {
+//               // failed to destroy session
+//           } else {
+//               return res.redirect('/logIntoDash');
+//           }
+//       })
+//   }  
+// })
 
 // Incase of Error
 app.get('*',(req,res)=>{

@@ -4,57 +4,42 @@ block content
     table(class='table')
         thead
             tr
-                th(scope='col') view Details
-                th F.O 1
-                //- th(scope='col')
-                //-     a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
-                th F.O 2
-                th F.O 3
-                th F.O 4
+                //- th(scope='col') view Details
+                //- th F.O 1
+                //- th F.O 2
+                //- th F.O 3
+                //- th F.O 4
 
-                //- th(scope="col") Date of Birth
-                //- th(scope="col") National ID Number
-                //- th(scope="col") Residence Type
-                //- th(scope="col") Period of Stay
+                th Names:
+                th Ward:
+                th F.O Number:
+                th Regsitration Date:
+                th Gender:
+                th Activities:
+                th Phone:
+                th Address:
+                th Username:
+                th Password:
+
         tbody
             if users.length
             each user in users
                 tr
-                    th(scope='row') Names:
-                    td #{user.foName}
-                tr 
-                    th(scope='row') Ward:
+                    td #{user.name}
                     td #{user.selectWard}
-                tr    
-                    th(scope='row') F.O Number:
                     td #{user.foNum}
-                tr
-                    th(scope='row') Regsitration Date:
                     td #{user.regDate}
-                tr
-                    th(scope='row') Gender:
                     td #{user.gender}
-                tr
-                    th(scope='row') Activities:
-                         a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
                     td #{user.foActivities}
-                        //- a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
-                tr
-                    th(scope='row') Phone:
-                        a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
                     td #{user.phone}
-                        //- a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
-                tr
-                    th(scope='row') Address:
                     td #{user.address}
-                tr
-                    //- td
-                    //-     a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
-                    //- td
-                    //-     a(class='btn btn-outline-success btn-sm' href='/viewFo/'+user._id) View
-                    //- td
-                        //- form(method='post' action='/delete')
-                        //-     input(type='hidden', placeholder='', name='id', value=user._id)
-                        //-     button.btn.btn-dark.btn-block(type='submit') Delete
+                    td #{user.username}
+                    td #{user.password}
+                    td
+                        a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
+                    td
+                        //- form(method="post" action='/delete')
+                        //-     input(type="hidden", placeholder="", name="id", value=user._id)
+                        //-     button.btn.btn-dark.btn-block(type="submit") Delete  
             else
                 p No registrations yet :(

@@ -79,37 +79,47 @@ router.get('/foRegForm',(req,res)=>{
     res.render('foRegForm',{title:'F.O Registration'})
 });
 // Save FO Registration to database
-router.post('/registerFO', async(req,res)=>{
-    try{
-        const foRegistration = new User(req.body);
-        await foRegistration.save(() => {
-            console.log('save success')
-            res.redirect('/folist')
-        })
-    }
-    catch(err) {
-        res.status(400).send('Sorry! Something went wrong.')
-        console.log(err)
-    }   
-})
+// router.post('/registerFO', async(req,res)=>{
+//     try{
+//         const items = new User(req.body);
+//         await items.save(() => {
+//             console.log('save success')
+//             res.redirect('/folist')
+//         })
+//     }
+//     catch(err) {
+//         res.status(400).send('Sorry! Something went wrong.')
+//         console.log(err)
+//     }   
+// })
 
-// Example code
-router.post('/', async (req, res) => {
-    try {
-        const items = new User(req.body);
+router.post('/registerFO', async (req, res) => { 
+    try { const items = new User(req.body);
         await User.register(items, req.body.password , (err) => {
             if (err)
-              { 
-               throw err
-              }
-            res.redirect('/login')
-        })
-    }
-    catch (err) {
-        res.status(400).send('Sorry! Something went wrong.')
-        console.log(err)
-    }
-})
+            { throw err } res.redirect('/folist') 
+            }) } catch (err) { 
+                res.status(400).send('Sorry! Something went wrong with F.O Registration.')
+                console.log(err)}
+            })
+
+// Example code
+// router.post('/', async (req, res) => {
+//     try {
+//         const items = new User(req.body);
+//         await User.register(items, req.body.password , (err) => {
+//             if (err)
+//               { 
+//                throw err
+//               }
+//             res.redirect('/login')
+//         })
+//     }
+//     catch (err) {
+//         res.status(400).send('Sorry! Something went wrong.')
+//         console.log(err)
+//     }
+// })
 
 // AO List Routing & retrieve data from the database 
 router.get('/foList', async(req,res)=>{

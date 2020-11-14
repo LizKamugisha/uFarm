@@ -1,4 +1,4 @@
-extends layoutAO
+extends layoutDash
 block content
     h3(class='formTitle') Update Farmer One Details
     form(method='post' action='/update?id='+user._id)
@@ -7,4 +7,82 @@ block content
             tr
                 th Names
                 td
-                    input.form-control(value = user.name name ='name')
+                    input.form-control(value = user.name name ='name' readonly)
+            tr
+                th Urban Ward
+                td 
+                    select.form-control(name='selectWard')
+                        option(value='ward 1' selected = user.selectWard === 'ward 1') Urban Ward 1
+                        option(value='ward 2' selected = user.selectWard === 'ward 2') Urban Ward 2
+                        option(value='ward 3' selected = user.selectWard === 'ward 3') Urban Ward 3
+                        option(value='ward 4' selected = user.selectWard === 'ward 4') Urban Ward 4
+            tr
+                th Ufarm ID Number
+                td
+                    input.form-control(value = user.foNum name ='ufarmID' readonly)
+            tr
+                th Registration Date
+                td
+                    input.form-control(value = user.regDate name ='regDate' readonly)
+            tr
+                th Gender
+                td
+                    label Male&nbsp
+                    input(value= "male" type="radio" checked = user.gender==="male" name="gender" disabled) 
+                    label &nbspFemale&nbsp
+                    input(value= "female" type="radio" checked = user.gender==="female" name="gender" disabled)
+            tr
+                th Date of Birth
+                td
+                    input.form-control(value = user.birthday name ='birthday' readonly)
+            tr
+                th National ID
+                td
+                    input.form-control(value = user.nin name ='nin' readonly)
+            //- tr
+            //-     th ID Photo
+            //-     td
+            //-         input.form-control(value = user.idPhoto name ='idPhoto')
+            tr
+                th Phone Number
+                td
+                    input.form-control(value = user.phone name ='phone')
+            tr
+                        th Activities
+                        td 
+                            label Registration&nbsp 
+                            input(value= 'Registration' type='checkbox' checked = user.activities.includes('Registration') name='activities')
+                            label &nbspInspection&nbsp
+                            input(value= 'Inspection' type='checkbox' checked =user.activities.includes('Inspection') name='activities')
+                            label &nbspApproval&nbsp
+                            input(value= 'Approval' type='checkbox' checked =user.activities.includes('Approval') name='activities')
+                            label &nbspReview&nbsp
+                            input(value= 'Review' type='checkbox' checked =user.activities.includes('Review') name='activities')
+            tr
+                th Residence Type
+                td 
+                    select.form-control(name='residence' disabled)  
+                        option(value='permanent' selected = user.residence === 'permanent') Permanent
+                        option(value='rental' selected = user.residence === 'rental') Rental
+            tr
+                th Period of Stay
+                td 
+                    select.form-control(name='homeStay' disabled)  
+                        option(value='> 10 yrs' selected = user.homeStay === '> 10 yrs') More than 10 Years
+                        option(value='< 10 yrs' selected = user.homeStay === '< 10 yrs') Less than 10 Years
+            tr
+                th Home Address
+                td
+                    input.form-control(value = user.address name ='address' readonly)
+            tr
+                th Username
+                td
+                    input.form-control(value = user.username name ='username')
+            tr  
+                th Password
+                td
+                    input.form-control(value = user.password name ='password')
+            tr 
+                td(colspan="2")
+                    button.btn.btn-success.btn-block(type='submit') Update
+            //- button(type='submit' class='btn btn-success btn-lg col-sm-10' id='btnStyle' name='submitForm' value='submit' onclick='validateForm()') Submit

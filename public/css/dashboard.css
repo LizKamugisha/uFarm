@@ -8,10 +8,12 @@
   background-color: #8cc63f;
   overflow-x: hidden;
   padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
 }
-img {
+/* img {
   margin-left: 40px;
-}
+} */
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -55,4 +57,13 @@ select {
 #btnStyle {
   margin-top: 30px;
   margin-left: 190px;
+}
+th {
+  width: 200px;
+}
+.loginBox {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f6f6f6;
+  text-align: center;
 }

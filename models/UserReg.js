@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
 // Define Schema Model
-// const foRegistration = new mongoose.Schema({
 const userReg = new mongoose.Schema({
     
  // SignUp / Login Schema
@@ -21,11 +20,16 @@ const userReg = new mongoose.Schema({
     type: String,
     required: 'Please enter password',
   },
+  role: { 
+    type: [{ 
+      type: String
+    }], 
+    required: 'Please Enter a role' },
 
 
-// FO Registration Schema
+// User Registration Schema
     selectWard: String,
-    foNum: {
+    ufarmID: {
       type: String,
       unique: true,
     },
@@ -40,7 +44,9 @@ const userReg = new mongoose.Schema({
       type: Number,
       unique: true,
     },
-    foActivities: [{type:String}],
+    activities: [{
+      type: String
+    }],
     residence: String,
     homeStay: String,
     address:{

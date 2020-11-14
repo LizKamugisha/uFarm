@@ -1,8 +1,8 @@
-extends layoutAO
+extends layoutDash
 block content
     h3(class='formTitle') List of all Farmer One Officers
     table(class='table')
-        thead
+        thead(class='thead-light')
             tr
                 //- th(scope='col') view Details
                 //- th F.O 1
@@ -10,16 +10,17 @@ block content
                 //- th F.O 3
                 //- th F.O 4
 
-                th Names:
-                th Ward:
-                th F.O Number:
-                th Regsitration Date:
-                th Gender:
-                th Activities:
-                th Phone:
-                th Address:
-                th Username:
-                th Password:
+                th Names
+                th Urban Ward
+                th Ufarm ID Number
+                th Regsitration Date
+                th Gender
+                th Activities
+                th Phone
+                th Address
+                th Username
+                th Password
+                th Update
 
         tbody
             if users.length
@@ -27,16 +28,16 @@ block content
                 tr
                     td #{user.name}
                     td #{user.selectWard}
-                    td #{user.foNum}
+                    td #{user.ufarmID}
                     td #{user.regDate}
                     td #{user.gender}
-                    td #{user.foActivities}
+                    td #{user.activities}
                     td #{user.phone}
                     td #{user.address}
                     td #{user.username}
                     td #{user.password}
                     td
-                        a(class='btn btn-outline-success btn-sm' href='/updateFo/'+user._id) Update
+                        a(class='btn btn-outline-success btn-sm' href='/update/'+user._id) Edit
                     td
                         //- form(method="post" action='/delete')
                         //-     input(type="hidden", placeholder="", name="id", value=user._id)

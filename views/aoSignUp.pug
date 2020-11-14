@@ -18,6 +18,14 @@ block content
                         input.col-md-11.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
                         p#pwdAlert
                     li
+                        select.col-md-11.form-control(name='role' required)
+                            option(selected='' value='default') Select Role
+                            option#admin(value='admin') Agricultural Officer
+                            //- option#agriOfficer(value='agriOfficer') Agricultural Officer
+                            option#farmerOne(value='farmerOne') Farmer One
+                            option#urbanFarmer(value='urbanFarmer') Urban Farmer
+                        //- p#selectAlert
+                    li
                     button.btn.btn-success.btn-lg.btn-block.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
                         | SIGNUP
                 div.btmText

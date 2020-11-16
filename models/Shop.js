@@ -2,24 +2,26 @@
 const mongoose = require('mongoose');
 
 // Define Schema Model
-// const userSchema = new mongoose.Schema({
-//     // Login Schema
-//     name: {
-//       type: String,
-//       unique: true,
-//       required: 'Please enter first & last name',
-//     },
-//     username: {
-//       type: String,
-//       unique: true,
-//       required: 'Please enter username',
-//     },
-//     password: {
-//       type: String,
-//       required: 'Please enter password',
-//     },
-//     selectWard: String,
-//   });
+const shopSchema = new mongoose.Schema({
+    // Product Schema
+    productName: {
+      type: String,
+    },
+    productType: String,
+    unitPrice: {
+      type: Number,
+    },
+    quantity: {
+      type: Number,
+    },
+    productDate: Date,
+    payment: String,
+    delivery: String,
+    address:{
+      type: String,
+    },
+    selectWard: String,
+  });
     
   // Create Model & Export it
-  module.exports = mongoose.model('UfarmUsers', userSchema);
+  module.exports = mongoose.model('Shop', shopSchema);

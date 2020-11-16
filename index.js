@@ -19,9 +19,8 @@ const passport = require('passport');
 const pageRoutes = require('./routes/uFarmRoutes');
 
 // Importing model schema 
-// // const FarmerOneReg = require('./models/FarmerOneReg');
-// const UfarmUsers = require('./models/UfarmUsers');
 const UserReg = require('./models/UserReg');
+// const Shop = require('../models/Shop')
 
 // Create an express application
 const app = express()
@@ -68,6 +67,7 @@ passport.deserializeUser(UserReg.deserializeUser());
 // passport.use(FarmerOneReg.createStrategy());
 // passport.serializeUser(FarmerOneReg.serializeUser());
 // passport.deserializeUser(FarmerOneReg.deserializeUser());
+//
 
 // Connect to public folder
 app.use(express.static(path.join(__dirname,'public')))

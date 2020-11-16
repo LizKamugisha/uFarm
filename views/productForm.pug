@@ -1,5 +1,52 @@
 extends layoutUF
 block content
     div(class='regFormDiv')
-        h3(class='formTitle') Upload your Product
+        h3(class='formTitle') Upload Your Product
         form(class='form-group row' name='ufReg' action='/uploadProduct' method='POST')
+            label(for='productName' class='col-sm-2 col-form-label') Product Name:
+            input.col-md-10.form-control(type='text' name='productName' placeholder='Please enter the name of your product' required)
+            //- p(class='alert' id='nameAlert')
+            //- div.row(class='custom-file col-sm-10')
+            //-     label(for='productPhoto' class='col-sm-2 col-form-label') Product Photo:
+            //-     label(class='custom-file-label' for='productPhoto') Upload photo of your product
+            //-     input(type='file' class='custom-file-input' id='productPhoto')
+            label(class="col-form-label col-sm-2") Product Type:
+            div.col-sm-10.form-check(class="productType")
+                input(class="form-check-input" type="radio" name="productType" value="organic")
+                label(class="form-check-label checkLabel col-2" for="organic") Organic 
+                input(class="form-check-input" type="radio" name="productType" value="nonOrganic")
+                label(class="form-check-label checkLabel" for="nonOrganic") Non Organic
+            //- p(class="alert" id="pTypeAlert")
+            label(for='unitPrice' class='col-sm-2 col-form-label') Unit Price:
+            input.col-md-10.form-control(type='number' name='unitPrice' placeholder='Please enter the unit price' required)
+            //- p(class='alert' id='priceAlert')
+            label(for='quantity' class='col-sm-2 col-form-label') Quantity:
+            input.col-md-10.form-control(type='number' name='quantity' placeholder='Please enter the quantity available' required)
+            //- p(class='alert' id='nameAlert')
+            label(for='productDate' class='col-sm-2 col-form-label') Date :
+            input.col-md-10.form-control(type='date' name='productDate' required)
+            label(class="col-form-label col-sm-2") Mode of Payment:
+            div.col-sm-10.form-check(class="payment")
+                input(class="form-check-input" type="radio" name="payment" value="cash")
+                label(class="form-check-label checkLabel col-2" for="cash") Cash 
+                input(class="form-check-input" type="radio" name="payment" value="mobileMoney")
+                label(class="form-check-label checkLabel" for="mobileMoney") Mobile Money
+            //- p(class="alert" id="pTypeAlert")
+            label(class="col-form-label col-sm-2") Mode of Delivery:
+            div.col-sm-10.form-check(class="delivery")
+                input(class="form-check-input" type="radio" name="delivery" value="pickUp")
+                label(class="form-check-label checkLabel col-2" for="pickUp") Pick Up 
+                input(class="form-check-input" type="radio" name="delivery" value="homeDelivery")
+                label(class="form-check-label checkLabel" for="homeDelivery") Home Delivery
+            //- p(class="alert" id="pTypeAlert")
+            label(for='address' class='col-sm-2 col-form-label') Farm Address :
+            textarea.col-md-10.form-control(name='address', cols='10', rows='5' type='text' placeholder='Please enter the directions to your Farm' required)
+            label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
+            select.col-md-10.form-control(name='selectWard' required)
+                option(selected='' value='default') Select your ward
+                option#ward1(value='ward 1') Urban Ward 1
+                option#ward2(value='ward 2') Urban Ward 2
+                option#ward3(value='ward 3') Urban Ward 3
+                option#ward4(value='ward 4') Urban Ward 4
+            //- p(class='alert' id='wardAlert')
+            button(type='submit' class='btn btn-success btn-lg btn-block' name='submitForm' value='submit' onclick='validateForm()') Upload Product

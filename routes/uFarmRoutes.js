@@ -4,8 +4,9 @@ const passport = require('passport');
 const roles = require('../roles')
 // const passportLocalMongoose = require('passport-local-mongoose');
 
-// Importing model schema 
+// Importing model schemas
 const User = require('../models/UserReg')
+const Shop = require('../models/Shop')
 
 // Homepage Routing
 router.get('/',(req,res)=>{
@@ -37,19 +38,7 @@ router.get('/aoSignUp',(req,res)=>{
 //     res.redirect('/login');
 // })
 
-// router.post('/signup', async(req,res)=>{
-//     try{
-//         const userReg= new User(req.body);
-//         await userReg.save(() => {
-//             console.log('save success')
-//             res.redirect('/login')
-//         })
-//     }
-//     catch(err) {
-//         res.status(400).send('Sorry! Something went wrong.')
-//         console.log(err)
-//     }   
-// })
+
 
 router.post('/signup', async (req, res) => { 
     try { const items = new User(req.body);
@@ -222,6 +211,17 @@ router.get('/ufList', async(req,res)=>{
 router.get('/productForm',(req,res)=>{
     res.render('productForm',{title:'Upload Product'})
 });
+// Post & Save products to database
+router.post('/uploadProduct', async (req, res) => { 
+    try { const shopItem = new Shop(req.body);
+        await shopItem.save(() => {
+            console.log('item saved succesfully')
+            res.redirect('/stockList') 
+            })
+        } catch (err) { 
+                res.status(400).send('Sorry! Something went wrong with product upload')
+                console.log(err)}
+            });
 
 // //logout
 // app.post('/logout', (req, res) => {

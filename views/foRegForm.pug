@@ -80,12 +80,12 @@ block content
                     input.col-sm-9.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
                     //- p#pwdAlert
                 div.row
-                    select.col-md-11.form-control(name='role' required)
+                    label(for='role' class='col-sm-2 col-form-label') Role :
+                    select.col-sm-9.form-control(name='role' required)
                         option(selected='' value='default') Select Role
-                        option#admin(value='admin') Agricultural Officer
-                        //- option#agriOfficer(value='agriOfficer') Agricultural Officer
+                        option#admin(value='admin' disabled) Agricultural Officer
                         option#farmerOne(value='farmerOne') Farmer One
                         option#urbanFarmer(value='urbanFarmer') Urban Farmer
                         //- p#selectAlert
 
-            button(type='submit' class='btn btn-success btn-lg btn-block' id='btnStyle' name='submitForm' value='submit' onclick='validateForm()') Submit
+            button(type='submit' class='btn btn-success btn-lg btn-block' name='submitForm' value='submit' onclick='validateForm()') Submit

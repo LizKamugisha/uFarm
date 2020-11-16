@@ -66,7 +66,7 @@ router.get('/logIntoDash',(req,res)=>{
     res.render('login',{title:'UFarm Login'})
 });
 
-//process the username, password & rol that are submitted in the login page
+// Authenticate login details and redirect to dashboard depending on user role (A.O, F.O, U.F)
 router.post('/logIntoDash', passport.authenticate('local'), (req,res) =>{
     req.session.user = req.user;
     const userRole = roles[req.user.role]
@@ -137,30 +137,13 @@ router.get('/ufDash', async (req, res) => {
     }   
     })
 
-// AO Dashboard Routing
-// router.get('/aoDash',(req,res)=>{
-//     res.render('aoDash',{title:'A.O Dashboard'})
-// });
+// AGRI-OFFICER ROUTES
 
-// AO Registration Form Routing
+// FO Registration Form
 router.get('/foRegForm',(req,res)=>{
     res.render('foRegForm',{title:'F.O Registration'})
 });
 // Save FO Registration to database
-// router.post('/registerFO', async(req,res)=>{
-//     try{
-//         const items = new User(req.body);
-//         await items.save(() => {
-//             console.log('save success')
-//             res.redirect('/folist')
-//         })
-//     }
-//     catch(err) {
-//         res.status(400).send('Sorry! Something went wrong.')
-//         console.log(err)
-//     }   
-// });
-
 router.post('/registerFO', async (req, res) => { 
     try { const items = new User(req.body);
         await User.register(items, req.body.password , (err) => {
@@ -170,25 +153,6 @@ router.post('/registerFO', async (req, res) => {
                 res.status(400).send('Sorry! Something went wrong with F.O Registration.')
                 console.log(err)}
             })
-
-// Example code
-// router.post('/', async (req, res) => {
-//     try {
-//         const items = new User(req.body);
-//         await User.register(items, req.body.password , (err) => {
-//             if (err)
-//               { 
-//                throw err
-//               }
-//             res.redirect('/login')
-//         })
-//     }
-//     catch (err) {
-//         res.status(400).send('Sorry! Something went wrong.')
-//         console.log(err)
-//     }
-// })
-
 // Retrieve data from the database & View all registerd FO
 router.get('/foList', async(req,res)=>{
     try{
@@ -212,7 +176,6 @@ router.get('/update/:id', async (req, res) => {
         res.redirect('/foList')
     }
 })
-
 router.post('/update', async (req, res) => {
 if (req.session.user) {
     try {
@@ -227,14 +190,38 @@ if (req.session.user) {
 }   
 })
 
-// Get & Post Methods for Appointing New FO
-// router.get('/foNew',(req,res)=>{
-//     res.render('foNew',{title:'Appoint F.O'})
-// });
-// Get & Post Methods for creating FO Login Credentials
-// router.get('/foEditLogin',(req,res)=>{
-//     res.render('foEditLogin',{title:'Edit F.O Login'})
-// });
+// FARMER-ONE ROUTES
+
+// UF Registration Form
+router.get('/ufRegForm',(req,res)=>{
+    res.render('ufRegForm',{title:'U.F Registration'})
+});
+// Save UF Registration to database
+router.post('/registerUF', async (req, res) => { 
+    try { const items = new User(req.body);
+        await User.register(items, req.body.password , (err) => {
+            if (err)
+            { throw err } res.redirect('/uflist') 
+            }) } catch (err) { 
+                res.status(400).send('Sorry! Something went wrong with U.F Registration.')
+                console.log(err)}
+            })
+// Retrieve data from the database & View all registerd UF
+router.get('/ufList', async(req,res)=>{
+    try{
+        let items = await User.find()
+        res.render('ufList', { users: items})
+    }catch(err){
+        res.status(400).send('Unable to find items in the database');
+    }  
+});
+
+// URBAN-FARMER ROUTES
+
+// Get Product Form
+router.get('/productForm',(req,res)=>{
+    res.render('productForm',{title:'Upload Product'})
+});
 
 // //logout
 // app.post('/logout', (req, res) => {

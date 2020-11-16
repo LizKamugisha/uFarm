@@ -51,7 +51,8 @@
 }
 label,
 input,
-select {
+select,
+textarea {
   margin-bottom: 10px;
 }
 #btnStyle {
@@ -60,9 +61,11 @@ select {
 }
 th {
   width: 200px;
+  vertical-align: text-top;
 }
 .loginBox {
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 20px;
   background-color: #f6f6f6;
   text-align: center;

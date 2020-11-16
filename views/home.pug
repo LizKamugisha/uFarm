@@ -1,3 +1,26 @@
 extends layoutFrontPage
 block content
-    h1 Landing Page / Home Page
+    //- h1 Landing Page / Home Page
+    .row
+        img(src='../images/homepage_banner.jpg' width='100%')
+    div(class='categories')
+        .card-deck
+            div.card
+                img.mx-auto(src='../images/horticulture_icon.jpg' alt='horticulture' width='300')
+                button(type='button' class='btn btn-outline-success btn-block') View Products
+            div.card
+                img.mx-auto(src='../images/poultry_icon.jpg' alt='poultry' width='300')
+                button(type='button' class='btn btn-outline-success btn-block') View Products
+            div.card
+                img.mx-auto(src='../images/diary_icon.jpg' alt='diary' width='300')
+                button(type='button' class='btn btn-outline-success btn-block') View Product
+    div.row.row-cols-2  
+        img(src='../images/femaleFarmer.jpg' alt='urbanFarmer' width='50%')
+        .col-6.greenBox
+            h3 About Us
+            p Ufarm is a local initative based in Masajja Division that aims to promote and support urban farming practice while easing market access and improving the livelihoods of urban framers. 
+            p We source the freshest organic & non organic produce, and offer flexible delivery & payment options.
+            p Lets buy Uganda and build Uganda together !
+            br
+            button(type='button' class='btn btn-light btn-block') Contact Us
+

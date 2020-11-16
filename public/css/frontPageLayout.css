@@ -30,3 +30,30 @@ form li {
   margin-bottom: 15px;
   /* float: center; */
 }
+.card-deck {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.card {
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: #8cc63f;
+}
+.greenBox {
+  background-color: #8cc63f;
+  padding: 50px;
+}
+h3 {
+  color: #ffffff;
+  font-family: serif;
+  font-size: 28pt;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+p {
+  color: #ffffff;
+  font-size: 16pt;
+}
+a {
+  margin: auto;
+}

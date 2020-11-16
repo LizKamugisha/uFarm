@@ -17,7 +17,6 @@ const passport = require('passport');
 
 // instantiate & assign/import routes
 const pageRoutes = require('./routes/uFarmRoutes');
-const loginRoutes = require('./routes/uFarmLogin');
 
 // Importing model schema 
 // // const FarmerOneReg = require('./models/FarmerOneReg');
@@ -75,7 +74,7 @@ app.use(express.static(path.join(__dirname,'public')))
 
 // Connect to main Routing where all Get & Post Methods are
 app.use('/', pageRoutes);
-// app.use('/login', loginRoutes );
+
 
 //logout
 // app.post('/logIntoDash', (req, res) => {

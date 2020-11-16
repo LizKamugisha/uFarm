@@ -1,8 +1,7 @@
 extends layoutFrontPage
 block content
-    div.row.row-cols-2.container-fluid
-        div.col-6
-            img(src='../images/seedlingPic.png' width='680' height='680' alt='')
+    div.row.row-cols-2
+        img(src='../images/seedlingPic.png' width='680' height='680' alt='')
         div.col-6.greyBox
             //- Add action & method to connect to backend
             form(name='dashLogin' action='/logIntoDash' method='POST')
@@ -18,7 +17,6 @@ block content
                         select.col-md-11.form-control(name='role' required)
                             option(selected='' value='default') Select Role
                             option#admin(value='admin') Agricultural Officer
-                            //- option#agriOfficer(value='agriOfficer') Agricultural Officer
                             option#farmerOne(value='farmerOne') Farmer One
                             option#urbanFarmer(value='urbanFarmer') Urban Farmer
                         //- p#selectAlert
@@ -27,8 +25,8 @@ block content
                 div.btmText
                     | Forgot your Username or Password ? 
                     br 
-                    | Contact your district LC Agricultural Officer for assistance.
+                    | Contact your district Agricultural Officer for assistance.
                     br
-                    | If you are the Agricultural Officer, Sign Up to access the Admin Dashboard
-                    br
-                    a(class='btn btn-outline-success btn-lng' href='/aoSignUp') Sign Up
+                div.btmText
+                    h6 If you are the Agricultural Officer, please sign up first before login
+                    a(class='btn btn-outline-success btn-lg btn-block col-md-10' href='/aoSignUp') Sign Up

@@ -1,8 +1,7 @@
 extends layoutFrontPage
 block content
-    div.row.row-cols-2.container-fluid
-        div.col-6
-            img(src='../images/seedlingPic.png' width='680' height='680' alt='')
+    div.row.row-cols-2
+        img(src='../images/seedlingPic2.jpg' width='680' height='680' alt='')
         div.col-6.greyBox
             //- Add action & method to connect to backend
             form(name='dashLogin' action='/signup' method='POST')
@@ -21,15 +20,12 @@ block content
                         select.col-md-11.form-control(name='role' required)
                             option(selected='' value='default') Select Role
                             option#admin(value='admin') Agricultural Officer
-                            //- option#agriOfficer(value='agriOfficer') Agricultural Officer
-                            option#farmerOne(value='farmerOne') Farmer One
-                            option#urbanFarmer(value='urbanFarmer') Urban Farmer
+                            //- option#farmerOne(value='farmerOne') Farmer One
+                            //- option#urbanFarmer(value='urbanFarmer') Urban Farmer
                         //- p#selectAlert
                     li
                     button.btn.btn-success.btn-lg.btn-block.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
                         | SIGNUP
                 div.btmText
-                    | Login to access the Admin Dashboard
-                    br
-                    a(class='btn btn-outline-success btn-lng') Sign Up
-                    //- a(class='btn btn-outline-success btn-lng' href='/login') Sign Up
+                    h6 Login as Agricultural Officer to access the Admin Dashboard
+                    a(class='btn btn-outline-success btn-lg btn-block col-md-10' href='/logIntoDash') Login

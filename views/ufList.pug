@@ -1,15 +1,9 @@
-extends layoutDash
+extends layoutFO
 block content
-    h3(class='formTitle') List of all Farmer One Officers
+    h3(class='formTitle') List of all registerd Urban Farmers
     table(class='table')
         thead(class='thead-light')
             tr
-                //- th(scope='col') view Details
-                //- th F.O 1
-                //- th F.O 2
-                //- th F.O 3
-                //- th F.O 4
-
                 th Names
                 th Urban Ward
                 th Ufarm ID
@@ -37,7 +31,7 @@ block content
                     td #{user.username}
                     td #{user.password}
                     td
-                        a(class='btn btn-outline-success btn-sm' href='/update/'+user._id) Edit
+                        a(class='btn btn-outline-success btn-sm' href='/updateUF/'+user._id) Edit
                     td
                         //- form(method="post" action='/delete')
                         //-     input(type="hidden", placeholder="", name="id", value=user._id)

@@ -1,0 +1,33 @@
+extends layoutUF
+block content
+    h3(class='formTitle') Product Stock List
+    table(class='table')
+        thead(class='thead-light')
+            tr
+                th Product Name
+                th Product Photo
+                th Product Type
+                th Unit Price (ugx)
+                th Quantity Available
+                th Date Uploaded
+                th Update
+
+        tbody
+            if shopItems.length
+            each item in shopItems
+                tr
+                    td #{item.productName}
+                    td 
+                      img(src='/images/' + item.image hieght='50px' width='50px')
+                    td #{item.productType}
+                    td #{item.unitPrice}
+                    td #{item.quantity}
+                    td #{item.productDate}
+                    td
+                        a(class='btn btn-outline-success btn-sm' href='/updateStock/'+item._id) Update
+                    td
+                        //- form(method="post" action='/delete')
+                        //-     input(type="hidden", placeholder="", name="id", value=user._id)
+                        //-     button.btn.btn-dark.btn-block(type="submit") Delete  
+            else
+                p No registrations yet :(

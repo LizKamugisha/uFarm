@@ -1,0 +1,30 @@
+extends layoutFO
+block content
+    h3(class='formTitle') Urban Farmer Product Review
+    table(class='table')
+        thead(class='thead-light')
+            tr
+                th Product Name
+                th Product Photo
+                th Product Type
+                th Unit Price (ugx)
+                th Quantity Available
+                th Date Uploaded
+                th Inspection
+
+        tbody
+            if shopItems.length
+            each item in shopItems
+                tr
+                    td #{item.productName}
+                    td 
+                      img(src='/images/' + item.image hieght='50px' width='50px')
+                    td #{item.productType}
+                    td #{item.unitPrice}
+                    td #{item.quantity}
+                    td #{item.productDate}
+                    td
+                        a(class='btn btn-outline-success btn-sm' href='/approved/'+item._id) Approve
+                    td
+            else
+                p No products have been uploaded yet

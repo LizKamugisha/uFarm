@@ -15,9 +15,11 @@
   margin-left: 40px;
 } */
 .sidenav a {
-  padding: 6px 8px 6px 16px;
+  padding: 6px 8px 6px 60px;
+  /* padding-left: 60px; */
   text-decoration: none;
-  font-size: 25px;
+  font-size: 22px;
+  text-align: left;
   color: #000000;
   display: block;
 }

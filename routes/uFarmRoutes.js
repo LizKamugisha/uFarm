@@ -2,11 +2,28 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const roles = require('../roles')
+
 // const passportLocalMongoose = require('passport-local-mongoose');
 
 // Importing model schemas
 const User = require('../models/UserReg')
 const Shop = require('../models/Shop')
+
+// Multer Middleware Settings
+// const path = require('path')
+const multer = require('multer');
+// const fs = require('fs');
+// const imgModel = require('../models/Shop')
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './public/images/')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  });
+const upload = multer({ storage: storage}).single('image');
 
 // Homepage Routing
 router.get('/',(req,res)=>{
@@ -15,14 +32,20 @@ router.get('/',(req,res)=>{
 router.get('/home',(req,res)=>{
     res.render('home',{title:'U Farm'})
 });
-// router.post('/linkToForm', (req, res) => {
-//   console.log(req.body)
-//   res.render('form', {title:'Subscribe'})
-// });
+
 // Shop page Routing
-router.get('/shop',(req,res)=>{
-    res.render('shop',{title:'UFarm Shop'})
+// router.get('/shop',(req,res)=>{
+//     res.render('shop',{title:'UFarm Shop'})
+// });
+router.get('/shop', async(req,res)=>{
+    try{
+        let items = await Shop.find()
+        res.render('shop',{title:'Upload Product', shopItems: items})
+    }catch(err){
+        res.status(400).send('Unable to find items in the database');
+    }  
 });
+
 // Shopping Order page Routing
 router.get('/order',(req,res)=>{
     res.render('order',{title:'UFarm Order'})
@@ -32,14 +55,8 @@ router.get('/order',(req,res)=>{
 router.get('/aoSignUp',(req,res)=>{
     res.render('aoSignUp',{title:'UFarm SignUp'})
 });
+
 // Save the sign up details to the database and redirect to login
-// router.post('/signup', passport.authenticate('local'), (req,res) =>{
-//     req.session.user = req.user;
-//     res.redirect('/login');
-// })
-
-
-
 router.post('/signup', async (req, res) => { 
     try { const items = new User(req.body);
         await User.register(items, req.body.password , (err) => {
@@ -70,26 +87,9 @@ router.post('/logIntoDash', passport.authenticate('local'), (req,res) =>{
     } else{
         console.log('something went wrong with role authentication');
     }
-})
-// router.post('/', passport.authenticate('local', {failureRedirect: '/login'}), (req,res) =>{
-//     req.session.user = req.user;
-//     const userRole = roles[req.user.role]
-    
-//     if(userRole == 'admin')
-//         {
-//          res.redirect('/userlist');
-//         }
-//     else(userRole == 'farmer')
-//         {
-//         res.redirect('/farmerdash');
-//     }
-// })
+});
 
 // Redirect to user Dashboard depending on user role (A.O, F.O, U.F)
-// router.get('/aoDash',(req,res)=>{
-//     res.render('aoDash',{title:'A.O Dashboard'})
-// });
-
 router.get('/aoDash', async (req, res) => {
     if (req.session.user) {
         try {
@@ -204,6 +204,15 @@ router.get('/ufList', async(req,res)=>{
         res.status(400).send('Unable to find items in the database');
     }  
 });
+// Review & Approve products uploaded by urban farmers
+router.get('/foReviewProd', async(req,res)=>{
+    try{
+        let items = await Shop.find()
+        res.render('foReviewProd', { shopItems: items})
+    }catch(err){
+        res.status(400).send('Unable to find items in the database');
+    }  
+});
 
 // URBAN-FARMER ROUTES
 
@@ -211,17 +220,86 @@ router.get('/ufList', async(req,res)=>{
 router.get('/productForm',(req,res)=>{
     res.render('productForm',{title:'Upload Product'})
 });
+
 // Post & Save products to database
-router.post('/uploadProduct', async (req, res) => { 
+router.post('/uploadProduct', upload, async (req, res) => { 
     try { const shopItem = new Shop(req.body);
+        shopItem.image = req.file.filename
         await shopItem.save(() => {
-            console.log('item saved succesfully')
+            console.log(req.body)
             res.redirect('/stockList') 
             })
         } catch (err) { 
                 res.status(400).send('Sorry! Something went wrong with product upload')
                 console.log(err)}
             });
+
+// Retrieve data from the database & View all uploaded produce in stock list
+router.get('/stockList', async(req,res)=>{
+    try{
+        let items = await Shop.find()
+        res.render('stockList', { shopItems: items})
+    }catch(err){
+        res.status(400).send('Unable to find items in the database');
+    }  
+});
+
+// routes to update stock page
+router.get('/updateStock/:id', async (req, res) => {
+    if (req.session.user) {
+        try {
+            const updateItem = await Shop.findOne({ _id:req.params.id })
+            res.render('updateStock', { shopItem: updateItem })
+        } catch (err) {
+            res.status(400).send('Unable to find item details in the database');
+        }
+    }else {
+        console.log('Unable to find session')
+        res.redirect('/stockList')
+    }
+});
+// posing updates back to stock list page
+router.post('/updateStock', async (req, res) => {
+if (req.session.user) {
+    try {
+        await Shop.findOneAndUpdate({_id:req.query.id}, req.body)
+        res.redirect('stockList');
+    } catch (err) {
+        res.status(404).send('Unable to update product details in the database');
+    } 
+}else {
+    console.log('Unable to find session')
+    res.redirect('/stockList')
+}   
+});
+
+// Edit & Update FO Details
+// router.get('/update/:id', async (req, res) => {
+//     if (req.session.user) {
+//         try {
+//             const updateUser = await User.findOne({ _id:req.params.id })
+//             res.render('updateFo', { user: updateUser })
+//         } catch (err) {
+//             res.status(400).send('Unable to find user details in the database');
+//         }
+//     }else {
+//         console.log('Unable to find session')
+//         res.redirect('/foList')
+//     }
+// })
+// router.post('/update', async (req, res) => {
+// if (req.session.user) {
+//     try {
+//         await User.findOneAndUpdate({_id:req.query.id}, req.body)
+//         res.redirect('foList');
+//     } catch (err) {
+//         res.status(404).send('Unable to update user details in the database');
+//     } 
+// }else {
+//     console.log('Unable to find session')
+//     res.redirect('/foList')
+// }   
+// })
 
 // //logout
 // app.post('/logout', (req, res) => {

@@ -1,3 +1,26 @@
 extends layoutFrontPage
 block content
-    h1 Shop Page
+    h1.formTitle Shop for Farm Fresh Produce
+    div(class='searchBar')
+      form(class="form-inline")
+        input(class="form-control mr-sm-2 col-md-5" type="search" placeholder="Search" aria-label="Search")
+        button(class="btn btn-outline-success" type="submit") Search
+    div(class='productListing')
+        .card-deck
+          if shopItems.length
+          each item in shopItems
+              div.card(class='productCard')
+                img.mx-auto(src='/images/' + item.image hieght='300px' width='300px')
+                h4 #{item.productName}
+                ul(class="list-group list-group-flush")
+                  //- label(class="list-group-item col-4") Product Type:
+                  li(class="list-group-item") #{item.productType}
+                  li(class="list-group-item") #{item.unitPrice}
+                  li(class="list-group-item") #{item.unitPrice}
+                  a(class="card-link btn btn-outline-success btn-md btn-block" href='/buyItem/'+item._id) 
+                    i(class='icon-shopping-cart') 
+                    | Buy
+          else
+                p No products available
+                  
+          

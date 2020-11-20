@@ -2,14 +2,18 @@ extends layoutUF
 block content
     div(class='regFormDiv')
         h3(class='formTitle') Upload Your Product
-        form(class='form-group row' name='ufReg' action='/uploadProduct' method='POST')
+        form(class='form-group row' name='productForm' action='/uploadProduct' enctype='multipart/form-data' method='POST')
             label(for='productName' class='col-sm-2 col-form-label') Product Name:
             input.col-md-10.form-control(type='text' name='productName' placeholder='Please enter the name of your product' required)
             //- p(class='alert' id='nameAlert')
-            //- div.row(class='custom-file col-sm-10')
-            //-     label(for='productPhoto' class='col-sm-2 col-form-label') Product Photo:
-            //-     label(class='custom-file-label' for='productPhoto') Upload photo of your product
-            //-     input(type='file' class='custom-file-input' id='productPhoto')
+            //- div.row
+            //-     p Product Photo:
+            //- label(class='custom-file-label col-sm-4' for='image') Upload photo of your product
+            //- input(type='file' class='custom-file-input col-sm-4' id='image' name='image' value='' required)
+            label(for='image' class='col-sm-2 col-form-label') Product Photo:
+            input.col-sm-10(type='file' id='image' name='image' value='' required)
+
+            //- p(class='alert' id='imageAlert')
             label(class="col-form-label col-sm-2") Product Type:
             div.col-sm-10.form-check(class="productType")
                 input(class="form-check-input" type="radio" name="productType" value="organic")

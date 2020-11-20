@@ -57,3 +57,30 @@ p {
 a {
   margin: auto;
 }
+.formTitle {
+  color: #8cc63f;
+  font-family: serif;
+  font-size: 28pt;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+.productCard {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #a0a0a0;
+}
+h4 {
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.searchBar {
+  margin-left: 450px;
+  /* margin: auto;
+  text-align: center;
+  align-items: center;
+  align-content: center; */
+}

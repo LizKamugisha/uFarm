@@ -14,6 +14,7 @@ const expressSession = require('express-session')({
   saveUninitialized: false
 });
 const passport = require('passport');
+// const multer = require('multer');
 
 // instantiate & assign/import routes
 const pageRoutes = require('./routes/uFarmRoutes');
@@ -64,10 +65,16 @@ passport.use(UserReg.createStrategy());
 passport.serializeUser(UserReg.serializeUser());
 passport.deserializeUser(UserReg.deserializeUser());
 
-// passport.use(FarmerOneReg.createStrategy());
-// passport.serializeUser(FarmerOneReg.serializeUser());
-// passport.deserializeUser(FarmerOneReg.deserializeUser());
-//
+// Multer Middleware Settings
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads')
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.fieldname + '-' + Date.now())
+//   }
+// });
+// const upload = multer({ storage: storage});
 
 // Connect to public folder
 app.use(express.static(path.join(__dirname,'public')))

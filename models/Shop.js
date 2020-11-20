@@ -7,6 +7,9 @@ const shopSchema = new mongoose.Schema({
     productName: {
       type: String,
     },
+    image: {
+      type: String,
+    },
     productType: String,
     unitPrice: {
       type: Number,
@@ -23,5 +26,5 @@ const shopSchema = new mongoose.Schema({
     selectWard: String,
   });
     
-  // Create Model & Export it
+  // Create & Export a Model called Shop which has a schema shopSchema
   module.exports = mongoose.model('Shop', shopSchema);

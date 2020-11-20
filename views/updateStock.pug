@@ -1,0 +1,63 @@
+extends layoutUF
+block content
+    h3(class='formTitle') Update Product Details
+    form(method='POST' action='/updateStock?id='+user._id enctype='multipart/form-data' )
+        table(class='table')
+         thead
+            tr
+                th Product Name
+                td
+                    input.form-control(value = item.productName name ='productName' readonly)
+            tr
+                th Product Photo
+                td
+                    input.form-control(name ='image' readonly)
+                    img(src='/images/' + item.image hieght='50px' width='50px')
+            tr
+                th Product Type
+                td
+                    label Organic&nbsp
+                    input(value= "organic" type="radio" checked = item.productType==="organic" name="productType" disabled) 
+                    label &nbspNon-Organic&nbsp
+                    input(value= "nonOrganic" type="radio" checked = item.productType==="nonOrganic" name="productType" disabled)
+            tr
+                th Unit Price
+                td
+                    input.form-control(value = item.unitPrice name ='unitPrice' readonly)
+            tr
+                th Quantity
+                td
+                    input.form-control(value = item.quantity name ='quantity')
+            tr
+                th Date
+                td
+                    input.form-control(value = item.productDate name ='productDate' readonly)
+            tr
+                th Mode of Payment
+                td
+                    label Cash&nbsp
+                    input(value= "cash" type="radio" checked = item.payment==="cash" name="payment" disabled) 
+                    label &nbspMobile Money&nbsp
+                    input(value= "mobileMoney" type="radio" checked = item.payment==="mobileMoney" name="payment" disabled)
+            tr
+                th Mode of Delivery
+                td
+                    label Pick Up&nbsp
+                    input(value= "pickUp" type="radio" checked = item.delivery==="pickUp" name="delivery" disabled) 
+                    label &nbspHome Delivery&nbsp
+                    input(value= "homeDelivery" type="radio" checked = item.delivery==="homeDelivery" name="delivery" disabled)
+            tr
+                th Farm Address
+                td
+                    input.form-control(value = item.address name ='address' readonly)
+            tr
+                th Urban Ward
+                td 
+                    select.form-control(name='selectWard')
+                        option(value='ward 1' selected = item.selectWard === 'ward 1') Urban Ward 1
+                        option(value='ward 2' selected = item.selectWard === 'ward 2') Urban Ward 2
+                        option(value='ward 3' selected = item.selectWard === 'ward 3') Urban Ward 3
+                        option(value='ward 4' selected = item.selectWard === 'ward 4') Urban Ward 4
+            tr 
+                td(colspan="2")
+                    button.btn.btn-success.btn-block(type='submit') Update

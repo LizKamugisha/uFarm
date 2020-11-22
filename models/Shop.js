@@ -24,6 +24,7 @@ const shopSchema = new mongoose.Schema({
       type: String,
     },
     selectWard: String,
+    status: String,
   });
     
   // Create & Export a Model called Shop which has a schema shopSchema

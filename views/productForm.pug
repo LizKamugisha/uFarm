@@ -53,4 +53,7 @@ block content
                 option#ward3(value='ward 3') Urban Ward 3
                 option#ward4(value='ward 4') Urban Ward 4
             //- p(class='alert' id='wardAlert')
+            label(for='status' class='col-sm-2 col-form-label') Status :
+            select.col-md-10.form-control(name='status')
+                option#pending(value='pending') Ready for Inspection
             button(type='submit' class='btn btn-success btn-lg btn-block' name='submitForm' value='submit' onclick='validateForm()') Upload Product

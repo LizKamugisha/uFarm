@@ -10,6 +10,7 @@ block content
                 th Unit Price (ugx)
                 th Quantity Available
                 th Date Uploaded
+                th Status
                 th Inspection
 
         tbody
@@ -23,8 +24,9 @@ block content
                     td #{item.unitPrice}
                     td #{item.quantity}
                     td #{item.productDate}
+                    td #{item.status}
                     td
-                        a(class='btn btn-outline-success btn-sm' href='/approved/'+item._id) Approve
+                        a(class='btn btn-outline-success btn-sm' href='/approveStock/'+item._id) Approve
                     td
             else
                 p No products have been uploaded yet

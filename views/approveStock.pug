@@ -1,7 +1,7 @@
-extends layoutUF
+extends layoutFO
 block content
-    h3(class='formTitle') Update Product Details
-    form(method='POST' action='/updateStock?id='+item._id enctype='multipart/form-data' )
+    h3(class='formTitle') Approve Product Details
+    form(method='POST' action='/approveStock?id='+item._id enctype='multipart/form-data' )
         table(class='table')
          thead
             tr
@@ -11,7 +11,7 @@ block content
             tr
                 th Product Photo
                 td
-                    input.form-control(name ='image' type='file')
+                    input.form-control(name ='image' type='file' disabled)
                     img(src='/images/' + item.image hieght='50px' width='50px')
             tr
                 th Product Type
@@ -27,7 +27,7 @@ block content
             tr
                 th Quantity
                 td
-                    input.form-control(value = item.quantity name ='quantity')
+                    input.form-control(value = item.quantity name ='quantity' readonly)
             tr
                 th Date
                 td
@@ -58,6 +58,20 @@ block content
                         option(value='ward 2' selected = item.selectWard === 'ward 2') Urban Ward 2
                         option(value='ward 3' selected = item.selectWard === 'ward 3') Urban Ward 3
                         option(value='ward 4' selected = item.selectWard === 'ward 4') Urban Ward 4
+            tr
+                th Status
+                td 
+                    select.form-control(name='status')
+                        option(selected='' value='pending') Update inspection status
+                        option(value='approved' selected = item.status === 'approved') Approved
+                        option(value='pending' selected = item.status === 'pending') Pending
+            //- tr
+            //-     th Status
+            //-     td
+            //-         label Approved&nbsp
+            //-         input(value= "approved" type="radio" checked = item.status==="approved" name="status") 
+            //-         label &nbspDeclined&nbsp
+            //-         input(value= "declined" type="radio" checked = item.status==="declined" name="status")
             tr 
                 td(colspan="2")
                     button.btn.btn-success.btn-block(type='submit') Update

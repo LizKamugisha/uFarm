@@ -10,6 +10,7 @@ block content
                 th Unit Price (ugx)
                 th Quantity Available
                 th Date Uploaded
+                th Status
                 th Update
 
         tbody
@@ -23,6 +24,7 @@ block content
                     td #{item.unitPrice}
                     td #{item.quantity}
                     td #{item.productDate}
+                    td #{item.status}
                     td
                         a(class='btn btn-outline-success btn-sm' href='/updateStock/'+item._id) Update
                     td

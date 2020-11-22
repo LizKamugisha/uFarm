@@ -84,3 +84,49 @@ h4 {
   align-items: center;
   align-content: center; */
 }
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+dt {
+  text-align: right;
+  margin-left: 10px;
+  /* margin-right: -10px; */
+  margin-top: 10px;
+}
+dd {
+  text-align: left;
+  margin-top: 10px;
+}
+li {
+  border-bottom: 1px rgb(195, 195, 195) solid;
+}
+.orderBtn {
+  margin: auto;
+  padding: 5px;
+}
+.modal-body li {
+  border: 0pt;
+}
+.modal-body dt {
+  margin-right: 10px;
+  margin-top: 0px;
+}
+.modal-body dd {
+  margin-top: 0px;
+}
+.modal-header {
+  height: 60px;
+  border-bottom: 0px;
+  vertical-align: inherit;
+}
+#orderTitle {
+  margin-bottom: 10px;
+  margin: auto;
+}
+.modal-body p {
+  color: #8cc63f;
+  font-size: 14pt;
+  text-align: center;
+  margin-right: 20px;
+}

@@ -6,24 +6,23 @@ block content
             //- Add action & method to connect to backend
             form(name='dashLogin' action='/signup' method='POST')
                 h5 Sign Up to Access the Admin Dashboard
-                ul
-                    li
-                        input.col-md-11.form-control(type='text' name='name' size='12' placeholder='Enter your Firstname & Lastname' required)
-                        p#nameAlert
-                    li
-                        input.col-md-11.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
-                        p#usernameAlert
-                    li
-                        input.col-md-11.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
-                        p#pwdAlert
-                    li
-                        select.col-md-11.form-control(name='role' required)
-                            option(selected='' value='default') Select Role
-                            option#admin(value='admin') Agricultural Officer
-                            //- option#farmerOne(value='farmerOne') Farmer One
-                            //- option#urbanFarmer(value='urbanFarmer') Urban Farmer
+                div.dashboardLogin
+                    input.col-md-11.form-control(type='text' name='name' size='12' placeholder='Enter your Firstname & Lastname' required)
+                    p#nameAlert
+                div.dashboardLogin
+                    input.col-md-11.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
+                    p#usernameAlert
+                div.dashboardLogin
+                    input.col-md-11.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
+                    p#pwdAlert
+                div.dashboardLogin
+                    select.col-md-11.form-control(name='role' required)
+                        option(selected='' value='default') Select Role
+                        option#admin(value='admin') Agricultural Officer
+                        //- option#farmerOne(value='farmerOne') Farmer One
+                        //- option#urbanFarmer(value='urbanFarmer') Urban Farmer
                         //- p#selectAlert
-                    li
+                div.dashboardLogin
                     button.btn.btn-success.btn-lg.btn-block.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
                         | SIGNUP
                 div.btmText

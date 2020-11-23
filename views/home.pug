@@ -7,13 +7,14 @@ block content
         .card-deck
             div.card
                 img.mx-auto(src='../images/horticulture_icon.jpg' alt='horticulture' width='300')
-                button(type='button' class='btn btn-outline-success btn-block') View Products
+                a(class='btn btn-outline-success btn-block' href='/shop') View Product
             div.card
                 img.mx-auto(src='../images/poultry_icon.jpg' alt='poultry' width='300')
-                button(type='button' class='btn btn-outline-success btn-block') View Products
+                a(class='btn btn-outline-success btn-block' href='/shop') View Product
             div.card
                 img.mx-auto(src='../images/diary_icon.jpg' alt='diary' width='300')
-                button(type='button' class='btn btn-outline-success btn-block') View Product
+                a(class='btn btn-outline-success btn-block' href='/shop') View Product
+
     div.row.row-cols-2  
         img(src='../images/femaleFarmer.jpg' alt='urbanFarmer' width='50%')
         .col-6.greenBox
@@ -22,5 +23,69 @@ block content
             p We source the freshest organic & non organic produce, and offer flexible delivery & payment options.
             p Lets buy Uganda and build Uganda together !
             br
-            button(type='button' class='btn btn-light btn-block') Contact Us
+            button(type='button' class='btn btn-light btn-block' data-toggle='modal' data-target='#contactUs') Contact Us
+
+                //- Pop Up Mail-In Order Form
+            div(class="modal fade" id="contactUs" tabindex="-1" role="dialog" aria-labelledby="orderTitle" aria-hidden="true")
+                div(class="modal-dialog modal-dialog-centered" role="document")
+                  div(class="modal-content")
+                    div(class="modal-header")
+                      h5.formTitle(class="modal-title" id="orderTitle") Join the Ufarm Family
+                      button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true")
+                    div(class="modal-body")
+                      //- form(method='POST' action='/order?id='+item._id)
+                      form(method='POST' action='/emailAO')
+                        ul
+                            li
+                                dl(class="row")
+                                    dt Name :
+                                    dd 
+                                        input.form-control(type='text' name='clientName' placeholder='Please enter your first & last name' size="35" required)
+                            li
+                                dl(class="row")
+                                    dt Phone :
+                                    dd 
+                                        input.form-control(type='tel' name='clientTel' placeholder='Please enter your phone number' size="35" required)
+                            li
+                                dl(class="row")
+                                    dt Email :
+                                    dd 
+                                        input.form-control(type='email' name='clientEmail' placeholder='Please enter your email address' size="35" required)
+                            li
+                                dl(class="row")
+                                    dt District :
+                                    dd 
+                                        input.form-control(type='text' name='clientAddress' placeholder='Please enter the district you reside in' size="35" required)
+                            li
+                                dl(class="row")
+                                    dt Activity of interest :
+                                    dd 
+                                        select.col-md-12.form-control(name='activityInterest' required)
+                                            option(selected='' value='default') Supplier or Buyer ?
+                                            option#supplier(value='supplier') Supplier
+                                            option#buyer(value='buyer') Buyer
+                            li
+                                dl(class="row")
+                                    dt Products of interest :
+                                dl(class="row")
+                                    dd
+                                        input(class='form-check-input' type='checkbox' name='productInterest' value= 'horticulture') 
+                                        label(class='form-check-label checkLabel col-5' for='horticulture') Horticulture
+                                        input(class='form-check-input' type='checkbox' name='productInterest' value= 'poultry')
+                                        label(class='form-check-label checkLabel col-3' for='poultry') Poultry
+                                        input(class='form-check-input' type='checkbox' name='productInterest' value= 'diary') 
+                                        label(class='form-check-label checkLabel col-3' for='diary') Diary
+                            li
+                                dl(class="row")
+                                    dt Extra note (optional):
+                                dl(class="row")
+                                    dd
+                                        textarea(class="form-control" cols='45', rows='3' id="message-text" placeholder='Anything else you would like us to know ?')
+                            li
+                                p Thank you for your message, we shall respond to your request within 24hrs.
+                    div.mx-auto(class="modal-footer")
+                        button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
+                        button(type="button" class="btn btn-success") Submit
+                    
 

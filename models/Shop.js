@@ -15,7 +15,7 @@ const shopSchema = new mongoose.Schema({
       type: Number,
     },
     quantity: {
-      type: Number,
+      type: String,
     },
     productDate: Date,
     payment: String,

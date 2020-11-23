@@ -120,6 +120,10 @@ li {
   border-bottom: 0px;
   vertical-align: inherit;
 }
+.modal-footer {
+  border-style: none;
+  margin-bottom: 20px;
+}
 #orderTitle {
   margin-bottom: 10px;
   margin: auto;
@@ -129,4 +133,34 @@ li {
   font-size: 14pt;
   text-align: center;
   margin-right: 20px;
+}
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-left: 55px;
+}
+.input-container input {
+  border-top-left-radius: 0pt;
+  border-bottom-left-radius: 0pt;
+}
+.icon {
+  padding: 10px;
+  background: #8cc63f;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  border-top-left-radius: 3pt;
+  border-bottom-left-radius: 3pt;
+}
+.dashboardLogin {
+  margin-left: 50px;
+  margin-bottom: 15px;
+}
+.form-check-label {
+  margin-left: 5px;
+}
+.form-check-input {
+  margin-left: 5px;
+  margin-right: 10px;
 }

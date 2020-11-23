@@ -6,21 +6,24 @@ block content
             //- Add action & method to connect to backend
             form(name='dashLogin' action='/logIntoDash' method='POST')
                 h5 Please login to access your Ufarm Dashboard
-                ul
-                    li
-                        input.col-md-11.form-control(type='text' name='username' size='12' placeholder='Enter Username' required)
+                div.input-container
+                        i(class='fas fa-user fa-lg fa-fw icon')
+                        input.col-md-9.form-control(type='text' name='username' size='12' placeholder='Enter Username' required)
                         p#usernameAlert
-                    li
-                        input.col-md-11.form-control(type='password' name='password' size='12' placeholder='Enter Password' required)
+                div.input-container
+                        i(class='fas fa-key fa-lg fa-fw icon')
+                        input.col-md-9.form-control(type='password' name='password' size='12' placeholder='Enter Password' required)
                         p#pwdAlert
-                    li
-                        select.col-md-11.form-control(name='role' required)
+                div.input-container
+                        i(class='fas fa-id-card fa-lg fa-fw icon')
+                        select.col-md-9.form-control(name='role' required)
                             option(selected='' value='default') Select Role
                             option#admin(value='admin') Agricultural Officer
                             option#farmerOne(value='farmerOne') Farmer One
                             option#urbanFarmer(value='urbanFarmer') Urban Farmer
                         //- p#selectAlert
-                    button.btn.btn-success.btn-lg.btn-block.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
+                div.dashboardLogin
+                    button.btn.btn-success.btn-lg.col-md-11(type='submit' name='dashboardLogin' value='submit' onclick='validateLogin()')
                         | LOGIN
                 div.btmText
                     | Forgot your Username or Password ? 

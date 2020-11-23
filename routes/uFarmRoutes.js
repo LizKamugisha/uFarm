@@ -223,6 +223,35 @@ router.get('/ufList', async(req,res)=>{
         res.status(400).send('Unable to find items in the database');
     }  
 });
+
+// Edit & Update UF Details
+router.get('/updateUF/:id', async (req, res) => {
+    if (req.session.user) {
+        try {
+            const updateUser = await User.findOne({ _id:req.params.id })
+            res.render('updateUF', { user: updateUser })
+        } catch (err) {
+            res.status(400).send('Unable to find user details in the database');
+        }
+    }else {
+        console.log('Unable to find session')
+        res.redirect('/ufList')
+    }
+})
+router.post('/updateUF', async (req, res) => {
+if (req.session.user) {
+    try {
+        await User.findOneAndUpdate({_id:req.query.id}, req.body)
+        res.redirect('ufList');
+    } catch (err) {
+        res.status(404).send('Unable to update user details in the database');
+    } 
+}else {
+    console.log('Unable to find session')
+    res.redirect('/ufList')
+}   
+})
+
 // Review product list uploaded by urban farmers
 router.get('/foReviewProd', async(req,res)=>{
     try{

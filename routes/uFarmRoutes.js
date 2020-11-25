@@ -8,6 +8,7 @@ const roles = require('../roles')
 // Importing model schemas
 const User = require('../models/UserReg')
 const Shop = require('../models/Shop')
+const Order = require('../models/ShopOrder')
 
 // Multer Middleware Settings
 // const path = require('path')
@@ -43,6 +44,27 @@ router.get('/shop', async(req,res)=>{
     }  
 });
 
+// Shop Orders Routes*
+router.post('/shopOrder', async (req, res) => { 
+    try { const shopOrder = new Order(req.body);
+        await shopOrder.save() 
+            console.log(req.body)
+            res.redirect('/shop')
+        } catch (err) { 
+                res.status(400).send('Sorry! Something went wrong with posting your shop order')
+                console.log(err)}
+            });
+
+
+            // router.post('/shopOrder', async (req, res) => { 
+            //     try { const items = new Order(req.body);
+            //         await Order.register(items, req.body.password , (err) => {
+            //             if (err)
+            //             { throw err } res.redirect('/shop') 
+            //             }) } catch (err) { 
+            //                 res.status(400).send('Sorry! Something went wrong with posting your shop order')
+            //                 console.log(err)}
+            //             })
 // router.get('/shop', async(req,res)=>{
 //     try{
 //         const status = await shopItems.find({status:'approved'})
@@ -65,10 +87,6 @@ router.get('/shop', async(req,res)=>{
 //     }  
 // });
 
-// Shopping Order page Routing
-router.get('/order',(req,res)=>{
-    res.render('order',{title:'UFarm Order'})
-});
 
 // Sign Up Route
 router.get('/aoSignUp',(req,res)=>{
@@ -295,6 +313,17 @@ router.post('/approveStock', upload, async(req,res)=>{
         }   
 });
 
+// Retrieving shop orders from database
+router.get('/viewOrders', async(req,res)=>{
+    try{
+        let items = await Order.find()
+        res.render('shopOrderReview', { shopItems: items})
+    }catch(err){
+        res.status(400).send('Unable to find items in the database');
+    }  
+});
+
+
 // URBAN-FARMER ROUTES
 
 // Get Product Form
@@ -371,6 +400,16 @@ router.post('/updateStock', upload, async(req,res)=>{
             console.log('Unable to find session')
             res.redirect('/stockList')
         }   
+});
+
+// Retrieving shop orders from database
+router.get('/viewOrders', async(req,res)=>{
+    try{
+        let items = await Order.find()
+        res.render('shopOrderReview', { shopItems: items})
+    }catch(err){
+        res.status(400).send('Unable to find items in the database');
+    }  
 });
 
 

@@ -17,12 +17,14 @@ html(lang='en')
         | &nbsp Welcome
       a(href='/foRegForm') 
         i(class='fas fa-user-plus fa-fw')
-        | &nbsp Regsiter U.F
+        | &nbsp Regsiter F.O
       a(href='/foList')
         i(class='fas fa-list-ol fa-fw') 
-        | &nbsp List All U.F
+        | &nbsp List All Farmers
       a(href='/logIntoDash') 
         i(class='fas fa-sign-out-alt fa-fw')
         | &nbsp Logout
     div(class='main')
       block content
+  //- Validation Script
+  script(src='../js/validateFoReg.js')

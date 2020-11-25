@@ -30,137 +30,142 @@ block content
                       dt(class="col-sm-6") Available Quantity(kg):
                       dd(class="col-sm-4") #{item.quantity}
                   .row
-                    a(class="card-link btn btn-outline-success btn-md col-md-5 orderBtn" data-toggle="modal" data-target="#mailInOrder") 
+                    a(class="card-link btn btn-outline-success btn-md col-md-5 orderBtn" data-toggle="modal" data-target="#mailInOrder"+item._id) 
                       i(class="icon-envelope") 
                       | Order By Email
-                    a(class="card-link btn btn-outline-success btn-md col-md-5 orderBtn" data-toggle="modal" data-target="#dialInOrder") 
+                    a(class="card-link btn btn-outline-success btn-md col-md-5 orderBtn" data-toggle="modal" data-target="#dialInOrder"+item._id) 
                       i(class='icon-phone') 
                       | Order By Phone
 
               //- Pop Up Mail-In Order Form
-              div(class="modal fade" id="mailInOrder" tabindex="-1" role="dialog" aria-labelledby="orderTitle" aria-hidden="true")
+              div(class="modal fade" id="mailInOrder"+item._id tabindex="-1" role="dialog" aria-labelledby="orderTitle" aria-hidden="true")
                 div(class="modal-dialog modal-dialog-centered" role="document")
-                  div(class="modal-content")
-                    div(class="modal-header")
-                      h5.formTitle(class="modal-title" id="orderTitle") Product Order Form
-                      button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                        span(aria-hidden="true")
-                    div(class="modal-body")
-                      //- form(method='POST' action='/order?id='+item._id)
-                      form(method='POST' action='/order')
-                        ul
-                          li
-                            dl(class="row")
-                              dt Product Name:
-                              dd #{item.productName}
-                          li
-                            dl(class="row")
-                              dt Product Type:
-                              dd #{item.productType}
-                          li
-                            dl(class="row")
-                              dt Unit Price:
-                              dd #{item.unitPrice}
-                          li
-                            dl(class="row")
-                              dt Quantity (kg):
-                              dd
-                                input.form-control(value = item.quantity name ='quantity')
-                          li
-                            dl(class="row")
-                              dt Mode of Payment:
-                              dd
-                                label Cash&nbsp
-                                input(value= "cash" type="radio" checked = item.payment==="cash" name="payment") 
-                                label &nbspMobile Money&nbsp
-                                input(value= "mobileMoney" type="radio" checked = item.payment==="mobileMoney" name="payment")
-                          li
-                            dl(class="row")
-                              dt Mode of Delivery:
-                              dd
-                                label Pick Up&nbsp
-                                input(value= "pickUp" type="radio" checked = item.delivery==="pickUp" name="delivery") 
-                                label &nbspHome Delivery&nbsp
-                                input(value= "homeDelivery" type="radio" checked = item.delivery==="homeDelivery" name="delivery")
-                          li
-                            dl(class="row")
-                              dt Email :
-                              dd 
-                                input.form-control(type='email' name='clientEmail' placeholder='Please enter your email address' size="35" required)
-                          li
-                            dl(class="row")
-                              dt Order notes (optional):
-                            dl(class="row")
-                              dd
-                                textarea(class="form-control" cols='45', rows='3' id="message-text" placeholder='Notes about your order, eg. special notes about delivery')
-                          li
-                            p Thank you for placing your order, we shall contact you soon to confirm your order.
-                    div(class="modal-footer")
-                      button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
-                      button(type="button" class="btn btn-success") Submit
+                  form(method='POST' action='/shopOrder')
+                    div(class="modal-content")
+                      div(class="modal-header")
+                        h5.formTitle(class="modal-title" id="orderTitle") Product Order Form
+                        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                          span(aria-hidden="true")
+                      div(class="modal-body")
+                          ul
+                            li
+                              dl(class="row")
+                                dt Product Name:
+                                dd
+                                  input.form-control(value = item.productName name="productName" readonly)
+                            li
+                              dl(class="row")
+                                dt Product Type:
+                                dd
+                                  input.form-control(value = item.productType name="productType" readonly)
+                            li
+                              dl(class="row")
+                                dt Unit Price:
+                                dd
+                                  input.form-control(value = item.unitPrice name="unitPrice" readonly)
+                            li
+                              dl(class="row")
+                                dt Quantity (kg):
+                                dd
+                                  input.form-control(value = item.quantity name ='quantity')
+                            li
+                              dl(class="row")
+                                dt Mode of Payment:
+                                dd
+                                  label Cash&nbsp
+                                  input(value= "cash" type="radio" checked = item.payment==="cash" name="payment") 
+                                  label &nbspMobile Money&nbsp
+                                  input(value= "mobileMoney" type="radio" checked = item.payment==="mobileMoney" name="payment")
+                            li
+                              dl(class="row")
+                                dt Mode of Delivery:
+                                dd
+                                  label Pick Up&nbsp
+                                  input(value= "pickUp" type="radio" checked = item.delivery==="pickUp" name="delivery") 
+                                  label &nbspHome Delivery&nbsp
+                                  input(value= "homeDelivery" type="radio" checked = item.delivery==="homeDelivery" name="delivery")
+                            li
+                              dl(class="row")
+                                dt Email :
+                                dd 
+                                  input.form-control(type='email' name='clientEmail' placeholder='Please enter your email address' size="35" required)
+                            li
+                              dl(class="row")
+                                dt Order notes (optional):
+                              dl(class="row")
+                                dd
+                                  textarea(class="form-control" cols='45', rows='3' name='orderNote' id="message-text" placeholder='Notes about your order, eg. special notes about delivery')
+                            li
+                              p Thank you for placing your order, we shall contact you soon to confirm your order.
+                      div(class="modal-footer")
+                        button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
+                        button(type="submit" class="btn btn-success") Submit
                     
               //- Pop Up Dial-In Order Form
-              div(class="modal fade" id="dialInOrder" tabindex="-1" role="dialog" aria-labelledby="orderTitle" aria-hidden="true")
+              div(class="modal fade" id="dialInOrder"+item._id tabindex="-1" role="dialog" aria-labelledby="orderTitle" aria-hidden="true")
                 div(class="modal-dialog modal-dialog-centered" role="document")
-                  div(class="modal-content")
-                    div(class="modal-header")
-                      h5.formTitle(class="modal-title" id="orderTitle") Product Order Form
-                      button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                        span(aria-hidden="true")
-                    div(class="modal-body")
-                      //- form(method='POST' action='/order?id='+item._id)
-                      form(method='POST' action='/order')
-                        ul
-                          li
-                            dl(class="row")
-                              dt Product Name:
-                              dd #{item.productName}
-                          li
-                            dl(class="row")
-                              dt Product Type:
-                              dd #{item.productType}
-                          li
-                            dl(class="row")
-                              dt Unit Price:
-                              dd #{item.unitPrice}
-                          li
-                            dl(class="row")
-                              dt Quantity (kg):
-                              dd
-                                input.form-control(value = item.quantity name ='quantity')
-                          li
-                            dl(class="row")
-                              dt Mode of Payment:
-                              dd
-                                label Cash&nbsp
-                                input(value= "cash" type="radio" checked = item.payment==="cash" name="payment") 
-                                label &nbspMobile Money&nbsp
-                                input(value= "mobileMoney" type="radio" checked = item.payment==="mobileMoney" name="payment")
-                          li
-                            dl(class="row")
-                              dt Mode of Delivery:
-                              dd
-                                label Pick Up&nbsp
-                                input(value= "pickUp" type="radio" checked = item.delivery==="pickUp" name="delivery") 
-                                label &nbspHome Delivery&nbsp
-                                input(value= "homeDelivery" type="radio" checked = item.delivery==="homeDelivery" name="delivery")
-                          li
-                            dl(class="row")
-                              dt Phone Contact:
-                              dd 
-                                input.form-control(type='tel' name='clientPhone' placeholder='Please enter your phone number' size='30' required)
-                          li
-                            dl(class="row")
-                              dt Order notes (optional):
-                            dl(class="row")
-                              dd
-                                textarea(class="form-control" cols='45', rows='3' id="message-text" placeholder='Notes about your order, eg. special notes about delivery')
-                          li
-                            p Thank you for placing your order, we shall contact you soon to confirm your order.
-    
-                    div(class="modal-footer")
-                      button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
-                      button(type="button" class="btn btn-success") Submit
+                  form(method='POST' action='/shopOrder')
+                    div(class="modal-content")
+                      div(class="modal-header")
+                        h5.formTitle(class="modal-title" id="orderTitle") Product Order Form
+                        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                          span(aria-hidden="true")
+                      div(class="modal-body")
+                        
+                          ul
+                            li
+                              dl(class="row")
+                                dt Product Name:
+                                dd
+                                  input.form-control(value = item.productName name="productName" readonly)
+                            li
+                              dl(class="row")
+                                dt Product Type:
+                                dd
+                                  input.form-control(value = item.productType name="productType" readonly)
+                            li
+                              dl(class="row")
+                                dt Unit Price:
+                                dd
+                                  input.form-control(value = item.unitPrice name="unitPrice" readonly)
+                            li
+                              dl(class="row")
+                                dt Quantity (kg):
+                                dd
+                                  input.form-control(value = item.quantity name ='quantity')
+                            li
+                              dl(class="row")
+                                dt Mode of Payment:
+                                dd
+                                  label Cash&nbsp
+                                  input(value= "cash" type="radio" checked = item.payment==="cash" name="payment") 
+                                  label &nbspMobile Money&nbsp
+                                  input(value= "mobileMoney" type="radio" checked = item.payment==="mobileMoney" name="payment")
+                            li
+                              dl(class="row")
+                                dt Mode of Delivery:
+                                dd
+                                  label Pick Up&nbsp
+                                  input(value= "pickUp" type="radio" checked = item.delivery==="pickUp" name="delivery") 
+                                  label &nbspHome Delivery&nbsp
+                                  input(value= "homeDelivery" type="radio" checked = item.delivery==="homeDelivery" name="delivery")
+                            li
+                              dl(class="row")
+                                dt Phone Contact:
+                                dd 
+                                  input.form-control(type='tel' name='clientPhone' placeholder='Please enter your phone number' size='30' required)
+                            li
+                              dl(class="row")
+                                dt Order notes (optional):
+                              dl(class="row")
+                                dd
+                                  textarea(class="form-control" cols='45', rows='3' name='orderNote' id="message-text" placeholder='Notes about your order, eg. special notes about delivery')
+                            li
+                              p Thank you for placing your order, we shall contact you soon to confirm your order.
+      
+                      div(class="modal-footer")
+                        button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
+                        button(type="submit" class="btn btn-success") Submit
           else
             p No products available
                   

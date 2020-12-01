@@ -21,7 +21,7 @@ html(lang='en')
       a(href='/stockList') 
         i(class='fas fa-list-ul fa-fw')
         | &nbsp View Stock
-      a(href='/viewOrders') 
+      a(href='/viewOrders2') 
         i(class='fas fa-shopping-cart fa-fw') 
         | &nbsp Incoming Orders
       a(href='/logIntoDash') 
@@ -29,3 +29,5 @@ html(lang='en')
         | &nbsp Logout
     div(class='main')
       block content
+  //- Validation Script
+  script(src='../js/validateProductForm.js')

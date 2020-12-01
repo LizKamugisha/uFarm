@@ -1,0 +1,30 @@
+extends layoutUF
+block content
+    h3(class='formTitle') Ufarm Client Orders
+    table(class='table')
+        thead(class='thead-light')
+            tr
+                th Product Name
+                th Product Type
+                th Unit Price (ugx)
+                th Quantity
+                th Payment
+                th Delivery
+                th Contact
+                th Extra Note
+
+        tbody
+            if shopItems.length
+            each item in shopItems
+                tr
+                    td #{item.productName}
+                    td #{item.productType}
+                    td #{item.unitPrice}
+                    td #{item.quantity}
+                    td #{item.payment}
+                    td #{item.delivery}
+                    td #{item.clientPhone} #{item.clientEmail}
+                    td #{item.orderNote}
+                    td
+            else
+                p No orders have been made yet

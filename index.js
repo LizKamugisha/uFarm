@@ -17,7 +17,13 @@ const passport = require('passport');
 // const multer = require('multer');
 
 // instantiate & assign/import routes
-const pageRoutes = require('./routes/uFarmRoutes');
+// const pageRoutes = require('./routes/uFarmRoutes');
+
+const customerRoutes = require('./routes/customerRoutes');
+const loginRoutes = require('./routes/signupLoginRoutes');
+const agriOfficerDash = require('./routes/aoRoutes');
+const farmerOneDash = require('./routes/foRoutes');
+const urbanFarmerDash = require('./routes/ufRoutes');
 
 // Importing model schema 
 const UserReg = require('./models/UserReg');
@@ -80,7 +86,14 @@ passport.deserializeUser(UserReg.deserializeUser());
 app.use(express.static(path.join(__dirname,'public')))
 
 // Connect to main Routing where all Get & Post Methods are
-app.use('/', pageRoutes);
+// app.use('/', pageRoutes);
+
+app.use('/', customerRoutes);
+app.use('/', loginRoutes);
+app.use('/', agriOfficerDash);
+app.use('/', farmerOneDash);
+app.use('/', urbanFarmerDash);
+
 
 
 //logout

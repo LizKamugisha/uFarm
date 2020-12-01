@@ -91,22 +91,24 @@ block content
             p(class='alert' id='addyAlert')
 
             div.col-12(class='border rounded loginBox')
-                h4 Create Login Credentials:
-                div.row
-                    label(for='username' class='col-sm-2 col-form-label') Username :
-                    input.col-sm-9.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
-                    p(class='alert' id='usernameAlert')
-                div.row
-                    label(for='password' class='col-sm-2 col-form-label') Password :
-                    input.col-sm-9.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
-                    p(class='alert' id='pwdAlert')
-                div.row
-                    label(for='role' class='col-sm-2 col-form-label') Role :
-                    select.col-sm-9.form-control(name='role' required)
-                        option(selected='' value='default') Select Role
-                        option#admin(value='admin' disabled) Agricultural Officer
-                        option#farmerOne(value='farmerOne') Farmer One
-                        option#urbanFarmer(value='urbanFarmer') Urban Farmer
+                fieldset
+                    legend Create Login Credentials:
+                    //- h4 Create Login Credentials:
+                    div.row
+                        label(for='username' class='col-sm-2 col-form-label') Username :
+                        input.col-sm-9.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
+                        p(class='alert' id='usernameAlert')
+                    div.row
+                        label(for='password' class='col-sm-2 col-form-label') Password :
+                        input.col-sm-9.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
+                        p(class='alert' id='pwdAlert')
+                    div.row
+                        label(for='role' class='col-sm-2 col-form-label') Role :
+                        select.col-sm-9.form-control(name='role' required)
+                            option(selected='' value='default') Select Role
+                            option#admin(value='admin' disabled) Agricultural Officer
+                            option#farmerOne(value='farmerOne') Farmer One
+                            option#urbanFarmer(value='urbanFarmer') Urban Farmer
                         p(class='alert' id='selectAlert')
 
             button(type='submit' class='btn btn-success btn-lg btn-block' name='submitForm' value='submit' onclick='validateFoReg()') Submit

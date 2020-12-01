@@ -3,75 +3,94 @@ block content
     div(class='regFormDiv')
         h3(class='formTitle') Urban Farmer Registration
         form(class='form-group row' name='ufReg' action='/registerUF' method='POST')
-            label(for='name' class='col-sm-2 col-form-label') Names :
-            input.col-md-10.form-control(type='text' name='name' placeholder='Please Enter Your First name & Surname' required)
-            //- p(class='alert' id='nameAlert')
+            .row.col-12
+                label(for='name' class='col-sm-2 col-form-label') Names :
+                input.col-md-10.form-control(type='text' name='name' placeholder='Please Enter Your First name & Surname' required)
+            p(class='alert' id='nameAlert')
 
-            label(class="col-form-label col-sm-2") Gender :
-            div.col-sm-10.form-check(class="genderOption")
-                input(class="form-check-input" type="radio" name="gender" id="male" value="male")
-                label(class="form-check-label checkLabel col-2" for="male") Male 
-                input(class="form-check-input" type="radio" name="gender" id="female" value="female")
-                label(class="form-check-label checkLabel" for="female") Female
-            //- p(class="alert" id="genderAlert")
+            .row.col-12
+                label(class="col-form-label col-sm-2") Gender :
+                div.col-sm-10.form-check(class="genderOption")
+                    input(class="form-check-input" type="radio" name="gender" id="male" value="male")
+                    label(class="form-check-label checkLabel col-2" for="male") Male 
+                    input(class="form-check-input" type="radio" name="gender" id="female" value="female")
+                    label(class="form-check-label checkLabel" for="female") Female
+            p(class='alert' id='genderAlert')
 
-            label(for='birthday' class='col-sm-2 col-form-label') Date of Birth :
-            input.col-md-10.form-control(name='birthday' type='date' required)
+            .row.col-12
+                label(for='birthday' class='col-sm-2 col-form-label') Date of Birth :
+                input.col-md-10.form-control(name='birthday' type='date' required)
+            p(class='alert' id='birthdayAlert')
 
-            label(for='nin' class='col-sm-2 col-form-label') National ID :
-            input.col-md-4.form-control(type='text' name='nin' placeholder='Please Enter Your National ID Number' required)
+            .row.col-12
+                label(for='nin' class='col-sm-2 col-form-label') National ID :
+                input.col-md-4.form-control(type='text' name='nin' placeholder='Please Enter Your National ID Number' required)
 
-            div(class='custom-file col-sm-5')
-                label(class='custom-file-label' for='idPhoto') Upload Photo of National Id
-                input(type='file' class='custom-file-input' id='idPhoto')
-            
-            label(for='phone' class='col-sm-2 col-form-label') Phone Number :
-            input.col-md-10.form-control(type='number' name='phone' placeholder='Please Enter Your Phone Number' required)
+                div(class='custom-file col-sm-5')
+                    label(class='custom-file-label' for='idPhoto') Upload Photo of National Id
+                    input(type='file' class='custom-file-input' id='idPhoto')
+            p(class='alert' id='ninAlert')
 
-            label(for='address' class='col-sm-2 col-form-label') Farm Address :
-            textarea(name='address', cols='10', rows='5' type='text' placeholder='Please enter the directions to your home' required).col-md-10.form-control
-            
-            label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
-            select.col-md-10.form-control(name='selectWard' required)
-                option(selected='' value='default') Select Urban Ward Area
-                option#ward1(value='ward 1') Urban Ward 1
-                option#ward2(value='ward 2') Urban Ward 2
-                option#ward3(value='ward 3') Urban Ward 3
-                option#ward4(value='ward 4') Urban Ward 4
-            //- p(class='alert' id='wardAlert')
+            .row.col-12
+                label(for='phone' class='col-sm-2 col-form-label') Phone Number :
+                input.col-md-10.form-control(type='number' name='phone' placeholder='Please Enter Your Phone Number' required)
+            p(class='alert' id='phoneAlert')
 
-            label(class='col-form-label col-sm-2') Select Activities :
-            div.col-sm-10.form-check(name='activities')
-                    input(class='form-check-input' type='checkbox' name='activities' value= 'Horticulture') 
-                    label(class='form-check-label checkLabel col-2' for='activities') Horticulture
-                    input(class='form-check-input' type='checkbox' name='activities' value= 'Poultry') 
-                    label(class='form-check-label checkLabel col-2' for='activities') Poultry
-                    input(class='form-check-input' type='checkbox' name='activities' value= 'Diary') 
-                    label(class='form-check-label checkLabel col-2' for='activities') Diary
+            .row.col-12
+                label(for='address' class='col-sm-2 col-form-label') Farm Address :
+                textarea(name='address', cols='10', rows='5' type='text' placeholder='Please enter the directions to your home' required).col-md-10.form-control
+            p(class='alert' id='addyAlert')
 
-            label(for='regDate' class='col-sm-2 col-form-label') Registration Date :
-            input.col-md-10.form-control(type='date' name='regDate' placeholder='Please Enter the Registration Date' required)
+            .row.col-12
+                label(for='selectWard' class='col-sm-2 col-form-label') Urban Ward :
+                select.col-md-10.form-control(name='selectWard' required)
+                    option(selected='' value='default') Select Urban Ward Area
+                    option#ward1(value='ward 1') Urban Ward 1
+                    option#ward2(value='ward 2') Urban Ward 2
+                    option#ward3(value='ward 3') Urban Ward 3
+                    option#ward4(value='ward 4') Urban Ward 4
+            p(class='alert' id='wardAlert')
 
-            label(for='ufarmID' class='col-sm-2 col-form-label') Ufarm ID Number :
-            input.col-md-10.form-control(type='text' name='ufarmID' placeholder='Please Enter Your Unique ID Number here' required)
+            .row.col-12
+                label(class='col-form-label col-sm-2') Select Activities :
+                div.col-sm-10.form-check(name='activities')
+                        input(class='form-check-input' type='checkbox' name='activities' value= 'Horticulture') 
+                        label(class='form-check-label checkLabel col-2' for='activities') Horticulture
+                        input(class='form-check-input' type='checkbox' name='activities' value= 'Poultry') 
+                        label(class='form-check-label checkLabel col-2' for='activities') Poultry
+                        input(class='form-check-input' type='checkbox' name='activities' value= 'Diary') 
+                        label(class='form-check-label checkLabel col-2' for='activities') Diary
+                p(class='alert' id='activityAlert')
+
+            .row.col-12
+                label(for='regDate' class='col-sm-2 col-form-label') Registration Date :
+                input.col-md-10.form-control(type='date' name='regDate' placeholder='Please Enter the Registration Date' required)
+            p(class='alert' id='regDateAlert')
+
+            .row.col-12
+                label(for='ufarmID' class='col-sm-2 col-form-label') Ufarm ID Number :
+                input.col-md-10.form-control(type='text' name='ufarmID' placeholder='Please Enter Your Unique ID Number here' required)
+            p(class='alert' id='ufIdAlert')
 
             div.col-12(class='border rounded loginBox')
-                h4 Create Login Credentials:
-                div.row
-                    label(for='username' class='col-sm-2 col-form-label') Username :
-                    input.col-sm-9.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
-                    //- p#usernameAlert
-                div.row
-                    label(for='password' class='col-sm-2 col-form-label') Password :
-                    input.col-sm-9.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
-                    //- p#pwdAlert
-                div.row
-                    label(for='role' class='col-sm-2 col-form-label') Role :
-                    select.col-sm-9.form-control(name='role' required)
-                        option(selected='' value='default') Select Role
-                        option#admin(value='admin' disabled) Agricultural Officer
-                        option#farmerOne(value='farmerOne' disabled) Farmer One
-                        option#urbanFarmer(value='urbanFarmer') Urban Farmer
-                        //- p#selectAlert
+                fieldset
+                    legend Create Login Credentials:
+                    //- h4 Create Login Credentials:
+                    div.row
+                        label(for='username' class='col-sm-2 col-form-label') Username :
+                        input.col-sm-9.form-control(type='text' name='username' size='12' placeholder='Create an Alphanumeric Username' required)
+                        p(class='alert' id='usernameAlert')
+                    div.row
+                        label(for='password' class='col-sm-2 col-form-label') Password :
+                        input.col-sm-9.form-control(type='password' name='password' size='12' placeholder='Create your Password' required)
+                        p(class='alert' id='pwdAlert')
+                    div.row
+                        label(for='role' class='col-sm-2 col-form-label') Role :
+                        select.col-sm-9.form-control(name='role' required)
+                            option(selected='' value='default') Select Role
+                            option#admin(value='admin' disabled) Agricultural Officer
+                            option#farmerOne(value='farmerOne' disabled) Farmer One
+                            option#urbanFarmer(value='urbanFarmer') Urban Farmer
+                        p(class='alert' id='selectAlert')
 
-            button(type='submit' class='btn btn-success btn-lg btn-block' name='submitForm' value='submit' onclick='validateForm()') Submit
+            button(type='submit' class='btn btn-success btn-lg btn-block' name='submitForm' value='submit' onclick='validateUfReg()') Submit
